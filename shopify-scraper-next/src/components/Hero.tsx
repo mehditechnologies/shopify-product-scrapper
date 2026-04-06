@@ -69,7 +69,7 @@ export default function Hero() {
                 Chrome Extension
               </a>
               <button type="button" className="inline-flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-secondary dark:hover:text-secondary transition-colors group">
-                <span className="w-10 h-10 bg-gradient-to-r from-secondary to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 transition-transform">
+                <span className="w-10 h-10 bg-linear-to-r from-secondary to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 transition-transform">
                   <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z" />
                   </svg>
@@ -80,10 +80,9 @@ export default function Hero() {
           </div>
 
           {/* Right: Scraping Illustration */}
-          <div className="relative animate-slide-in-right">
-            <div className="relative">
+          <div className="relative ">
               {/* Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-3xl blur-3xl"></div>
+              <div className="absolute inset-0 bg-linear-to-r from-primary/30 to-secondary/30 rounded-3xl blur-3xl"></div>
 
               {/* Main Illustration */}
               <div className="relative flex items-center justify-center gap-4">
@@ -170,7 +169,7 @@ export default function Hero() {
                   <span className="text-sm font-medium text-gray-900 dark:text-white">&lt; 1 minute</span>
                 </div>
               </div>
-            </div>
+            
           </div>
         </div>
       </div>

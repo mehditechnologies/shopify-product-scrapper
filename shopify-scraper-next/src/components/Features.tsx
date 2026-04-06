@@ -61,7 +61,7 @@ export default function Features() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: Visual - Feature Cards Grid */}
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-3xl"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-primary/20 to-secondary/20 rounded-3xl blur-3xl"></div>
             <div className="relative grid grid-cols-2 gap-4">
               {features.map((feature, idx) => (
                 <div

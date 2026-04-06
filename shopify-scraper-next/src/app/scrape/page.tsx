@@ -2,19 +2,18 @@
 
 import { useState } from "react";
 
-// This is the main component for the scrape page
 // It allows users to enter a Shopify store URL and export products
 export default function ScrapePage() {
-  // State to manage the URL input from user
+  //Now what to store using states
+  // store user type url of website
   const [shopUrl, setShopUrl] = useState("");
-  
-  // State to track scraping status: 'idle' | 'loading' | 'success' | 'error'
+  // Track scraping progress : 'idle' | 'loading' | 'success' | 'error'
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   
   // State to store scraped products data
   const [products, setProducts] = useState<any[]>([]);
   
-  // State for error message if something goes wrong
+  // store error message
   const [error, setError] = useState("");
 
   // Function to handle the scrape action
@@ -29,45 +28,30 @@ export default function ScrapePage() {
     setError("");
     setStatus("loading");
 
+    //Now send url to backend to get data
     try {
-      // ============================================
-      // YES, YOU NEED A BACKEND FOR THIS!
-      // ============================================
-      // 
-      // Why? Because:
-      // 1. Shopify stores require server-side requests (no CORS from browser)
-      // 2. Scraping needs to run on a server, not client browser
-      // 3. You need to handle rate limiting and proxies
-      // 4. For export functionality, server needs to generate CSV files
-      //
-      // The frontend calls your backend API, and your backend does the scraping
-      //
-      // Example API call (uncomment when you have backend):
-      /*
+      // Frontend sends POST request to /api/scrape
+      // Backend uses products.json to get products
       const response = await fetch('/api/scrape', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url: shopUrl })
       });
-      
-      if (!response.ok) throw new Error('Failed to scrape');
-      
+
+      //Get the response data
       const data = await response.json();
+
+      // If response is not ok, throw error
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to scrape');
+      }
+
+      //update state with scraped products
+      // Data from API contains: { products: [...] }
+      // We save them to state to display on screen
       setProducts(data.products);
       setStatus('success');
-      */
 
-      // For demo purposes, we'll simulate a successful response
-      // Remove this mock data when you connect to real backend
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      setProducts([
-        { title: "Sample Product 1", price: "$29.99", variants: 3 },
-        { title: "Sample Product 2", price: "$49.99", variants: 5 },
-        { title: "Sample Product 3", price: "$19.99", variants: 2 },
-      ]);
-      setStatus("success");
-      
     } catch (err) {
       // If something goes wrong, show error
       setError("Failed to scrape. Please check the URL and try again.");
@@ -77,9 +61,7 @@ export default function ScrapePage() {
 
   // Function to export products as CSV
   const handleExport = () => {
-    // ============================================
-    // EXPORTING PRODUCTS (Client-side example)
-    // ============================================
+    
     // This creates a CSV file from the products array
     // You can do this in the browser or on the backend
     
@@ -160,12 +142,16 @@ export default function ScrapePage() {
 
             {/* Products List */}
             <div className="space-y-3">
-              {products.map((product, idx) => (
+              {products.map((product: any, idx: number) => (
                 <div key={idx} className="flex justify-between items-center p-4 bg-[#0F1729] rounded-lg">
                   <span>{product.title}</span>
                   <div className="text-right">
-                    <span className="text-[#018589] font-medium">{product.price}</span>
-                    <span className="text-gray-500 text-sm ml-2">({product.variants} variants)</span>
+                    <span className="text-[#018589] font-medium">
+                      {product.variants ? `$${product.variants[0]?.price || 'N/A'}` : 'N/A'}
+                    </span>
+                    <span className="text-gray-500 text-sm ml-2">
+                      ({product.variants?.length || 0} variants)
+                    </span>
                   </div>
                 </div>
               ))}
