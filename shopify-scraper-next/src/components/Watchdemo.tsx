@@ -21,7 +21,7 @@ export default function Watchdemo() {
 
         {/* Right: Video */}
         <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#018589]/20 to-secondary/20 rounded-2xl blur-xl"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-[#018589]/20 to-secondary/20 rounded-2xl blur-xl"></div>
           <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
             <iframe
               width="100%"

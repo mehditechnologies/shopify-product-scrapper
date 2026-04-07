@@ -54,7 +54,21 @@ export default function Footer() {
             </ul>
           </div>
 
-          
+          <div>
+            <h3 className="text-white font-semibold mb-4">Free Tools</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/theme_detector" className="text-gray-400 hover:text-[#018589]">
+                  Shopify Theme Detector
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/shopify-app-detector" className="text-gray-400 hover:text-[#018589]">
+                  Shopify App Detector
+                </Link>
+              </li>
+            </ul>
+          </div>
 
           <div>
             <h3 className="text-white font-semibold mb-4">Information</h3>
