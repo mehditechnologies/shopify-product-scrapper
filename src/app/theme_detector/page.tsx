@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function ThemeDetector() {
 //First store the url 
   const [storeUrl, setStoreUrl] = useState("");
-//store status
+//store status.
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 //Store fetched themes with name and id in usestate
   const [theme, setTheme] = useState<{
