@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import { useTheme } from "./ThemeProvider";
 
 const features = [
   {
@@ -47,10 +48,11 @@ const features = [
 ];
 
 export default function Features() {
+  const { theme } = useTheme();
   const sectionRef = useRef<HTMLElement>(null);
 
   return (
-    <section id="features" className="py-24 bg-white dark:bg-gray-900 relative overflow-hidden">
+    <section id="features" className={`py-24 relative overflow-hidden ${theme === "dark" ? "bg-gray-900" : "bg-gray-50"}`}>
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-blob"></div>

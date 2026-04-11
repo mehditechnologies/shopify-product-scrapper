@@ -1,24 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  /* NEW THEME COLOR - #0F1729 */
-  --background: #0F1729;
-  --foreground: #ffffff;
-  --primary: #0F1729;
+  /* Light theme (default) */
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --primary: #018589;
   --primary-dark: #0F1729;
   --secondary: #3498db;
   --accent: #e74c3c;
-  --muted: #1a2744;
+  --muted: #f3f4f6;
   --muted-dark: #1a1a1a;
-  --border: #2d3f5f;
+  --border: #e5e7eb;
   --border-dark: #374151;
-  --card: #162035;
+  --card: #ffffff;
   --card-dark: #1f2937;
   /* Custom theme colors */
   --color-primary: #018589;
   --color-secondary: #3498db;
   --gradient-primary: linear-gradient(135deg, #018589 0%, #0C3B47 100%);
   --gradient-secondary: linear-gradient(135deg, #3498db 0%, #6c5ce7 100%);
+}
+
+.dark {
+  --background: #0F1729;
+  --foreground: #ffffff;
+  --muted: #1a2744;
+  --border: #2d3f5f;
+  --card: #162035;
 }
 
 /* Gradient text */
@@ -45,21 +53,16 @@
 
 /* Glass card effect */
 .glass-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--card);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-.dark .glass-card {
-  background: rgba(30, 41, 59, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
 .glass-card-hover {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--card);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--border);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
 }
@@ -68,11 +71,6 @@
   transform: translateY(-5px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
   border-color: rgba(1, 133, 137, 0.3);
-}
-
-.dark .glass-card-hover {
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Blob animations */

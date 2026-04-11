@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useTheme } from "./ThemeProvider";
 
 export default function Newsletter() {
+  const { theme } = useTheme();
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 

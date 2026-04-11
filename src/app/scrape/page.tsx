@@ -24,7 +24,7 @@ export default function ScrapePage() {
       return;
     }
 
-    // Clear previous error and set loading status
+    //if url is valid then Clear previous error and set loading status
     setError("");
     setStatus("loading");
 
@@ -67,16 +67,43 @@ export default function ScrapePage() {
     
     if (products.length === 0) return;
 
-    // Define CSV headers
-    const headers = ["Title", "Price", "Variants"];
+    // Define CSV headers (columns)
+    const headers = ["ID", "Title", "Handle", "Body HTML", "Vendor", "Product Type", "Tags", "Created At", "Updated At", "Published At", "Status", "Gift Card", "Option 1 Name", "Option 1 Value", "Variant ID", "Variant Title", "Price", "SKU", "Inventory Quantity", "Grams", "Inventory Policy", "Fulfillment Service", "Requires Shipping", "Image Src"];
     
     // Map products to CSV rows
-    const rows = products.map(p => 
-      `"${p.title}","${p.price}","${p.variants}"`
-    );
+    const rows = products.map(p => {
+      const variant = p.variants?.[0] || {};
+      const image = p.images?.[0] || {};
+      return [
+        p.id || '',
+        p.title || '',
+        p.handle || '',
+        (p.body_html || '').replace(/"/g, '""'),
+        p.vendor || '',
+        p.product_type || '',
+        p.tags || '',
+        p.created_at || '',
+        p.updated_at || '',
+        p.published_at || '',
+        p.status ? 'true' : 'false',
+        p.gift_card ? 'true' : 'false',
+        p.options?.[0]?.name || '',
+        p.options?.[0]?.values?.[0] || '',
+        variant.id || '',
+        variant.title || '',
+        variant.price || '',
+        variant.sku || '',
+        variant.inventory_quantity || '',
+        variant.grams || '',
+        variant.inventory_policy || '',
+        variant.fulfillment_service || '',
+        variant.requires_shipping ? 'true' : 'false',
+        image.src || ''
+      ].map(field => `"${field}"`).join(",");
+    });
     
     // Combine headers and rows
-    const csv = [headers.join(","), ...rows.join("\n")].join("\n");
+    const csv = [headers.join(","), ...rows].join("\n");
     
     // Create a blob and download link
     const blob = new Blob([csv], { type: "text/csv" });
@@ -89,17 +116,18 @@ export default function ScrapePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0F1729] text-white p-8">
-      <div className="max-w-4xl mx-auto">
+    <div className=" min-h-screen bg-[#0F1729] p-20">
+      <div className="max-w-3xl mx-auto">
         {/* Page Header */}
-        <h1 className="text-3xl font-bold mb-2">Scrape Products</h1>
-        <p className="text-gray-400 mb-8">
+        <span className="p-3 m-76 bg-[#0C313F] rounded-full">Product Scraper</span>
+        <h1 className=" text-center text-4xl font-bold mb-4 mt-10">Scrape <span className="text-[#018589]">Products</span></h1>
+        <p className="text-center text-lg mb-8">
           Enter a Shopify store URL to scrape and export products
         </p>
 
         {/* Input Section */}
-        <div className="bg-[#162035] p-6 rounded-xl mb-8">
-          <label className="block text-sm font-medium mb-2">
+        <div className="bg-[#162035] p-7 rounded-3xl mb-8">
+          <label className="inline-block text-lg font-medium mb-4">
             Shopify Store URL
           </label>
           <div className="flex gap-4">
@@ -108,7 +136,7 @@ export default function ScrapePage() {
               value={shopUrl}
               onChange={(e) => setShopUrl(e.target.value)}
               placeholder="https://example.myshopify.com"
-              className="flex-1 px-4 py-3 bg-[#0F1729] border border-[#2d3f5f] rounded-lg focus:outline-none focus:border-[#018589]"
+              className="flex-1 px-5 py-4 bg-[#0F1729] border-2 border-[#018D92] rounded-lg focus:outline-4 focus:border-[#d5ecec]"
             />
             <button
               onClick={handleScrape}
@@ -140,11 +168,18 @@ export default function ScrapePage() {
               </button>
             </div>
 
-            {/* Products List */}
+            {/* Products List with images first */}
             <div className="space-y-3">
               {products.map((product: any, idx: number) => (
-                <div key={idx} className="flex justify-between items-center p-4 bg-[#0F1729] rounded-lg">
-                  <span>{product.title}</span>
+                <div key={idx} className="flex items-center p-4 bg-[#0F1729] rounded-full gap-4">
+                  {product.images?.[0]?.src && (
+                    <img 
+                      src={product.images[0].src} 
+                      alt={product.title}
+                      className="w-16 h-16 object-cover rounded-lg flex-shrink-0"
+                    />
+                  )}
+                  <span className="flex-1 font-medium">{product.title}</span>
                   <div className="text-right">
                     <span className="text-[#018589] font-medium">
                       {product.variants ? `$${product.variants[0]?.price || 'N/A'}` : 'N/A'}

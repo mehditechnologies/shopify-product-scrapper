@@ -4,18 +4,18 @@ import { useState } from "react";
 import Link from "next/link";
 
 
-export default function ThemeDetector() {
+export default function Appdetector() {
 //First store the url 
   const [storeUrl, setStoreUrl] = useState("");
 //store status
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-//Store fetched themes with name and id in usestate
-  const [theme, setTheme] = useState<{
+//Store fetched apps with name and id in usestate
+  const [app, setApp] = useState<{
     name: string;
     id: string | null;
   } | null>(null);
 
-//store any error not found theme
+//store any error not found apps
   const [error, setError] = useState("");
 
 //Now use handle detect function
@@ -27,9 +27,9 @@ export default function ThemeDetector() {
 
     setError("");
     setStatus("loading");
-
+//Now hit api to fetch data from backend
     try {
-      const response = await fetch("/api/detect-theme", {
+      const response = await fetch("/api/app-detect", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url: storeUrl }),
@@ -38,12 +38,12 @@ export default function ThemeDetector() {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || "Failed to detect theme");
+        setError(data.error || "Failed to detect apps");
         setStatus("error");
         return;
       }
 
-      setTheme(data.theme);
+      setApp(data.app);
       setStatus("success");
     } catch (err) {
       setError("Something went wrong. Please try again.");
@@ -52,19 +52,19 @@ export default function ThemeDetector() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0F1729] p-8">
-      <div className="max-w-2xl mx-auto">
+    <div className="min-h-screen bg-[#0F1729] p-20">
+      <div className="max-w-3xl mx-auto">
         {/* Header - Keep Your Original Design */}
-        <span className="block w-fit mx-auto px-5 py-2 mb-5 bg-[#0C313F] rounded-full text-[#257b9b]">Free Tool</span>
-        <h1 className="text-4xl font-bold text-center mb-5">
-          Shopify<span className="text-[#257b9b]"> Theme Detector</span>
+        <span className=" p-3 m-80 text-lg bg-[#0C313F] rounded-full text-[#298db2]">Free Tool</span>
+        <h1 className="text-4xl pt-10 font-bold text-center mb-5">
+          Shopify<span className="text-[#298db2]"> Apps Detector</span>
         </h1>
-        <p className="text-lg font-medium text-center text-gray-400 mb-8">
-          Identify the Shopify theme by inspecting any Shopify store. Simply type in the domain of a Shopify store.
+        <p className="text-lg font-medium text-center mb-8">
+          Identify the Shopify apps by inspecting any Shopify store. Simply type in the domain of a Shopify store.
         </p>
 
         {/* Input Form - Keep Your Original Design */}
-        <div className="bg-[#192642] p-6 rounded-xl mb-8">
+        <div className="bg-[#192642] p-6 rounded-xl mb-10">
           <label className="block text-md font-medium mb-3 text-white">
             Shopify Store URL
           </label>
@@ -74,14 +74,14 @@ export default function ThemeDetector() {
               value={storeUrl}
               onChange={(e) => setStoreUrl(e.target.value)}
               placeholder="Enter Shopify store URL e.g https://example.myshopify.com"
-              className="flex-1 px-4 py-3 bg-[#0F1729] border border-[#017075] rounded-full focus:outline-none text-white placeholder-gray-500"
+              className="flex-1 px-4 py-3 bg-[#0F1729] border-3 border-[#017075] rounded-full focus:outline-none text-white placeholder-gray-500"
             />
             <button
               onClick={handleDetect}
               disabled={status === "loading"}
               className="px-6 py-3 bg-[#e4ecec] text-[#017075] rounded-lg font-medium disabled:opacity-50 hover:bg-white transition-colors"
             >
-              {status === "loading" ? "Detecting..." : "Detect Theme"}
+              {status === "loading" ? "Detecting..." : "Detect apps"}
             </button>
           </div>
 
@@ -90,36 +90,21 @@ export default function ThemeDetector() {
           )}
         </div>
 
-        {status === "success" && theme && (
+        {status === "success" && app && (
           <div className="bg-[#162035] p-6 rounded-xl mb-8">
-            <h2 className="text-xl font-semibold mb-4 text-white">Detected Theme</h2>
+            <h2 className="text-xl font-semibold mb-4 text-white">Detected apps</h2>
             <div className="space-y-3">
               <div className="flex justify-between p-3 bg-[#0F1729] rounded-lg">
-                <span className="text-gray-400">Theme Name</span>
-                <span className="font-medium text-white">{theme.name}</span>
+                <span className="text-gray-400">app Name</span>
+                <span className="font-medium text-white">{app.name}</span>
               </div>
               <div className="flex justify-between p-3 bg-[#0F1729] rounded-lg">
-                <span className="text-gray-400">Theme ID</span>
-                <span className="font-medium text-white">{theme.id || "Unknown"}</span>
+                <span className="text-gray-400">app ID</span>
+                <span className="font-medium text-white">{app.id || "Unknown"}</span>
               </div>
             </div>
           </div>
         )}
-
-        {/* Description Section - Added from reference */}
-        <div className="bg-[#162035]/80 backdrop-blur-md p-8 rounded-2xl mb-8">
-          <h3 className="text-xl font-bold text-white mb-4">
-            Get Shopify theme templates from competitor stores
-          </h3>
-          <div className="grid md:grid-cols-2 gap-6 text-gray-400">
-            <p>
-              Use <Link href="/" className="text-[#257b9b] hover:underline font-medium">Shopify Scraper</Link> powerful artificial intelligence shopify theme detector to <span className="text-[#257b9b] font-medium">automatically detect shopify theme</span> from store information! Simply input the Shopify store, click "Detect," and observe the theme displayed on your screen.
-            </p>
-            <p>
-              Obtain the Shopify theme swiftly identified by the Shopify Theme Detector within seconds. You can continue inputting multiple competitor stores until you acquire various themes. Click on the link to the shopify theme and <span className="text-[#257b9b] font-medium">use this theme on your shopify site</span>.
-            </p>
-          </div>
-        </div>
 
         {/* Other Free Tools - Added from reference */}
         <div className="py-8">
@@ -127,15 +112,15 @@ export default function ThemeDetector() {
             Other Free <span className="text-[#257b9b]">Tools</span>
           </h2>
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="flex items-center gap-4 p-4 rounded-xl border-2 border-[#257b9b] bg-[#257b9b]/10">
-              <div className="w-12 h-12 bg-gradient-to-r from-[#018589] to-[#01d4db] rounded-xl flex items-center justify-center flex-shrink-0">
+            <div className="flex items-center gap-4 p-4 rounded-xl border-[#257b9b] bg-[#257b9b]/10">
+              <div className="w-12 h-12 bg-linear-to-r from-[#018589] to-[#01d4db] rounded-xl flex items-center justify-center flex-shrink-0">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold text-white">Shopify Theme Detector</h3>
-                <p className="text-sm text-gray-400">Identify any Shopify theme</p>
+                <h3 className="font-semibold text-white">Shopify theme Detector</h3>
+                <p className="text-sm text-gray-400">Identify any Shopify app</p>
               </div>
             </div>
 

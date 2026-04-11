@@ -1,11 +1,5 @@
 "use client";
 
-/* 
-  HEADER COMPONENT
-  - Background: #0F1729 (dark blue)
-  - Navigation links and buttons use the theme color
-*/
-
 import { useTheme } from "./ThemeProvider";
 import Link from "next/link";
 
@@ -13,50 +7,43 @@ export default function Header() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    /* 
-      header:
-      - bg-[#0F1729] = dark blue background (#0F1729)
-      - border-[#2d3f5f] = subtle border color from theme
-    */
-    <header className="sticky top-4 bg-[#0F1729] border-b border-[#2d3f5f]">
+    
+    <header className={`sticky top-4 border-b ${theme === "dark" ? "bg-[#0F1729] border-[#2d3f5f]" : "bg-white border-gray-200"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo section */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2">
-              {/* Logo icon - uses #0F1729 color */}
-              <div className="w-8 h-8 bg-[#0F1729] rounded-lg flex items-center justify-center">
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${theme === "dark" ? "bg-[#0F1729]" : "bg-[#017F83]"}`}>
                 <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
                 </svg>
               </div>
-              {/* Logo text - white for visibility on dark bg */}
-              <span className="text-xl font-bold text-white">ShopifyScraper</span>
+              <span className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>ShopifyScraper</span>
             </Link>
           </div>
           
-          {/* Navigation links - white text on dark background */}
+          {/* Navigation links */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="/scrape" className=" font-medium text-gray-300 hover:text-[#018589]">
+            <Link href="/scrape" className={`font-medium hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
               Try it now
             </Link>
-            <Link href="#features" className=" font-medium text-gray-300 hover:text-[#018589]">
+            <Link href="#features" className={`font-medium hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
               Features
             </Link>
-            <Link href="#pricing" className="font-medium text-gray-300 hover:text-[#018589]">
+            <Link href="#pricing" className={`font-medium hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
               Pricing
             </Link>
-            <Link href="#video" className="font-medium text-gray-300 hover:text-[#018589]">
+            <Link href="#video" className={`font-medium hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
               How it works
             </Link>
           </nav>
 
           {/* Right side buttons */}
           <div className="flex items-center gap-4">
-            {/* Theme toggle button */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg text-gray-400 hover:bg-[#1a2744]"
+              className={`p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-[#1a2744] ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}
             >
               {theme === "light" ? (
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -69,21 +56,16 @@ export default function Header() {
               )}
             </button>
             
-            {/* Sign in link */}
             <Link
               href="/login"
-              className="text-sm font-medium text-gray-300 hover:text-green-500"
+              className={`text-sm font-medium hover:text-green-500 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}
             >
               Sign in
             </Link>
             
-            {/* 
-              Upgrade button:
-              - bg-[#0F1729] = uses the dark blue color (#0F1729)
-            */}
             <Link
               href="/register"
-              className="px-4 py-2 bg-[#0F1729] hover:bg-[#1a2744] text-white text-sm font-medium rounded-lg transition-colors"
+              className={`px-4 py-2 text-white text-sm font-medium rounded-lg transition-colors ${theme === "dark" ? "bg-[#0F1729] hover:bg-[#1a2744]" : "bg-[#017F83] hover:bg-[#015f65]"}`}
             >
               Upgrade Now
             </Link>

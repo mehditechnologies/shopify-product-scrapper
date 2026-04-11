@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { useTheme } from "./ThemeProvider";
 
 export default function Pricing() {
+  const { theme } = useTheme();
+  
   return (
-    <section id="pricing" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="pricing" className={`py-20 ${theme === "dark" ? "bg-gray-800" : "bg-gray-50"}`}>
       <div className="text-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className=" text-5xl font-bold text-gray-900 dark:text-white mb-4">
            Choose Your<span className="text-[#018589]"> Plan</span>

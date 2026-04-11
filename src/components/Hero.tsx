@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import { useTheme } from "./ThemeProvider";
 
 export default function Hero() {
+  const { theme } = useTheme();
   return (
-    <section className="relative min-h-screen overflow-hidden bg-linear-to-r ">
+    <section className={`relative min-h-screen overflow-hidden ${theme === "dark" ? "bg-[#0F1729]" : "bg-gradient-to-b from-gray-50 to-white"}`}>
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="blob-1 animate-blob"></div>
@@ -116,10 +118,10 @@ export default function Hero() {
 
                 {/* Arrow Animation */}
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-16 h-1 bg-gradient-to-r from-primary to-secondary rounded-full relative overflow-hidden">
+                  <div className="w-16 h-1 bg-linear-to-r from-primary to-secondary rounded-full relative overflow-hidden">
                     <div className="absolute inset-0 bg-white/50 animate-pulse"></div>
                   </div>
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center shadow-lg shadow-primary/30">
+                  <div className="w-12 h-12 bg-linear-to-r from-primary to-secondary rounded-full flex items-center justify-center shadow-lg shadow-primary/30">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>

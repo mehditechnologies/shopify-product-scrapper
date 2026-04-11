@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useTheme } from "./ThemeProvider";
 
 const faqs = [
   {
@@ -35,16 +36,17 @@ const faqs = [
 ];
 
 export default function FAQs() {
+  const { theme } = useTheme();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-20 bg-[#141c29]">
+    <section id="faq" className={`py-20 ${theme === "dark" ? "bg-[#141c29]" : "bg-gray-100"}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-gray-300">
+          <p className={`text-lg ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
             Everything you need to know about Shopify Scraper
           </p>
         </div>
@@ -53,13 +55,13 @@ export default function FAQs() {
           {faqs.map((faq, idx) => (
             <div
               key={idx}
-              className="bg-[#162035] rounded-xl overflow-hidden"
+              className={`rounded-xl overflow-hidden ${theme === "dark" ? "bg-[#162035]" : "bg-white shadow-md"}`}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                 className="w-full px-6 py-4 text-left flex justify-between items-center"
               >
-                <span className="text-lg font-medium text-white">
+                <span className={`text-lg font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
                   {faq.question}
                 </span>
                 <svg
@@ -82,7 +84,7 @@ export default function FAQs() {
                 <div className="px-6 pb-4">
                   <ul className="space-y-2">
                     {faq.answer.map((line, lineIdx) => (
-                      <li key={lineIdx} className="text-gray-300">
+                      <li key={lineIdx} className={theme === "dark" ? "text-gray-300" : "text-gray-600"}>
                         {line}
                       </li>
                     ))}
@@ -94,7 +96,7 @@ export default function FAQs() {
         </div>
 
         <div className="mt-12 text-center">
-          <p className="text-gray-300 mb-4">Still have questions?</p>
+          <p className={theme === "dark" ? "text-gray-300" : "text-gray-600"}>Still have questions?</p>
           <Link
             href="/contact"
             className="inline-block px-8 py-3 bg-[#018589] hover:bg-[#3e229c] text-white font-semibold rounded-lg transition-colors"
