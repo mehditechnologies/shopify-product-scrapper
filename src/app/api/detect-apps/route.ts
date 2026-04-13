@@ -71,8 +71,9 @@ const SHOPIFY_APPS = [
   { name: "Shopify Analytics", domains: ["shopify.com"], tags: ["shopify-analytics"] },
 ];
 
+// Now fetch the url  
 function fetchapps(url: string): Promise<Response> {
-  return fetch(url, {
+ return fetch(url, {
     headers: {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     },
@@ -93,6 +94,7 @@ async function fetchThemeTemplates(url: string): Promise<string> {
 
 async function fetchThemeAssets(url: string): Promise<string> {
   try {
+    // this is the url endpoint of assets
     const assetsUrl = `${url}/themes/latest/assets.json`;
     const response = await fetchapps(assetsUrl);
     if (response.ok) {

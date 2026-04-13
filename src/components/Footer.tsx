@@ -52,7 +52,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#pricing" className={`hover:text-[#018589] ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
+                <Link href="/#pricing" className={`hover:text-[#018589] ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
                   Pricing
                 </Link>
               </li>
@@ -94,7 +94,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className={`hover:text-[#018589] ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
+                <Link href="/contact-us" className={`hover:text-[#018589] ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
                   Contact Us
                 </Link>
               </li>

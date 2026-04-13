@@ -8,8 +8,8 @@ export default function Header() {
 
   return (
     
-    <header className={`sticky top-4 border-b ${theme === "dark" ? "bg-[#0F1729] border-[#2d3f5f]" : "bg-white border-gray-200"}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className={`sticky top-1 border-b ${theme === "dark" ? "bg-[#0F1729] border-[#2d3f5f]" : "bg-white border-gray-200"}`}>
+      <div className="max-w-7xl mx-auto p-3 lg:px-10">
         <div className="flex justify-between items-center h-16">
           {/* Logo section */}
           <div className="flex items-center">
@@ -19,7 +19,7 @@ export default function Header() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
                 </svg>
               </div>
-              <span className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>ShopifyScraper</span>
+              <span className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Shopify Scraper</span>
             </Link>
           </div>
           
@@ -28,13 +28,13 @@ export default function Header() {
             <Link href="/scrape" className={`font-medium hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
               Try it now
             </Link>
-            <Link href="#features" className={`font-medium hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
+            <Link href="/#features" className={`font-medium hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
               Features
             </Link>
-            <Link href="#pricing" className={`font-medium hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
+            <Link href="/#pricing" className={`font-medium hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
               Pricing
             </Link>
-            <Link href="#video" className={`font-medium hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
+            <Link href="/#Watchdemo" className={`font-medium hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
               How it works
             </Link>
           </nav>
@@ -64,7 +64,7 @@ export default function Header() {
             </Link>
             
             <Link
-              href="/register"
+              href="/#pricing"
               className={`px-4 py-2 text-white text-sm font-medium rounded-lg transition-colors ${theme === "dark" ? "bg-[#0F1729] hover:bg-[#1a2744]" : "bg-[#017F83] hover:bg-[#015f65]"}`}
             >
               Upgrade Now

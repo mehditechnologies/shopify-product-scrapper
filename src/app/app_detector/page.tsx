@@ -18,7 +18,7 @@ interface Particle {
   delay: number;
 }
 
-// store the url,status,apps.any error 
+// First store the url,status,apps.any error 
 export default function AppDetector() {
   const [storeUrl, setStoreUrl] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -27,6 +27,7 @@ export default function AppDetector() {
   const [isVisible, setIsVisible] = useState(false);
   const [particles, setParticles] = useState<Particle[]>([]);
 
+// Using useeffect so not render on every change
   useEffect(() => {
     setIsVisible(true);
     const newParticles = [...Array(10)].map((_, i) => ({
@@ -47,7 +48,7 @@ export default function AppDetector() {
       setError("Please enter a store URL");
       return;
     }
-
+    
     setError("");
     setStatus("loading");
 
