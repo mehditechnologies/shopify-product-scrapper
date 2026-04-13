@@ -3,7 +3,7 @@
 import { useTheme } from "@/components/ThemeProvider";
 import Link from "next/link";
 
-export default function PrivacyPolicy() {
+export default function SecurityPolicy() {
   const { theme } = useTheme();
 
   return (
@@ -12,81 +12,107 @@ export default function PrivacyPolicy() {
         <div className="text-center mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#018589]/10 dark:bg-[#018589]/20 border border-[#018589]/30 rounded-full text-[#018589] font-medium mb-6">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
             </svg>
-            Privacy
+            Security
           </div>
           <h1 className={`text-3xl md:text-4xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-            Privacy <span className="gradient-text">Policy</span>
+            Security <span className="gradient-text">Policy</span>
           </h1>
-          <p className={theme === "dark" ? "text-gray-400" : "text-gray-600"}>
-            Your privacy matters to us
+          <p className={theme === "dark" ? "text-white" : "text-gray-600"}>
+            Your security is our top priority
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
           <div className={`glass-card p-8 md:p-12 rounded-2xl`}>
-            <div className="mb-8">
-              <p className={`leading-relaxed ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
-                At Shopify Scraper, we take your privacy seriously. This Privacy Policy describes how we collect, use, and share information when you use our service.
+            <div className="mb-10">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-14 h-14 bg-gradient-to-r to-emerald-700 rounded-2xl flex items-center justify-center">
+                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                  </svg>
+                </div>
+                <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Data Encryption</h2>
+              </div>
+              <p className={`leading-relaxed ${theme === "dark" ? "text-white" : "text-gray-600"}`}>
+                All communication between you and our servers are encrypted using HTTPS. We use HSTS to allow your browser to know in advance that it should only communicate with us using HTTPS. Our backups of your data are always encrypted. To improve their durability they&apos;re stored in a separate geographical zone.
               </p>
             </div>
 
-            <div className="mb-8">
+            <div className="mb-10">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-[#018589] to-[#01d4db] rounded-2xl flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                <div className="w-14 h-14 bg-gradient-to-r from-[#018589] to-[#016a70] rounded-2xl flex items-center justify-center">
+                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                   </svg>
                 </div>
-                <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Information We Collect</h2>
+                <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Physical Security</h2>
               </div>
-              <p className={`leading-relaxed ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
-                We collect information you provide directly to us, such as when you create an account, use our services, or contact us for support.
+              <p className={`leading-relaxed ${theme === "dark" ? "text-white" : "text-gray-600"}`}>
+                We carefully select our hosting providers. We make sure our infrastructure has full redundancy for every major system, including the power supply and internet connection. The data centers we use have surveillance teams on site 24/7, barbed-wire fencing and strict security procedures.
               </p>
             </div>
 
-            <div className="mb-8">
+            <div className="mb-10">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+                <div className="w-14 h-14 bg-gradient-to-r  to-cyan-700 rounded-2xl flex items-center justify-center">
+                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
                   </svg>
                 </div>
-                <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>How We Use Information</h2>
+                <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Infrastructure</h2>
               </div>
-              <p className={`leading-relaxed ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
-                We use the information we collect to provide, maintain, and improve our services, to communicate with you, and to protect our rights and the rights of others.
+              <p className={`leading-relaxed ${theme === "dark" ? "text-white" : "text-gray-600"}`}>
+                We&apos;re continuously updating our infrastructure to stay on top of new vulnerabilities. All of our servers are monitored closely and logs are stored indefinitely.
               </p>
             </div>
 
-            <div className="mb-8">
+            <div className="mb-10">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                <div className="w-14 h-14 bg-gradient-to-r  to-pink-700 rounded-2xl flex items-center justify-center">
+                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
                   </svg>
                 </div>
-                <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Information Sharing</h2>
+                <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Billing Information</h2>
               </div>
-              <p className={`leading-relaxed ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
-                We do not sell, trade, or otherwise transfer your personal information to outside parties. We may share information with service providers who assist us in operating our website.
+              <p className={`leading-relaxed ${theme === "dark" ? "text-white" : "text-gray-600"}`}>
+                We never store your billing information on our servers. They are handled by our partner: Stripe.
               </p>
+              <div className={`mt-4 p-5 rounded-2xl ${theme === "dark" ? "bg-gray-800" : "bg-gray-100"}`}>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                    <svg className="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p className={`font-bold text-lg ${theme === "dark" ? "text-white" : "text-gray-900"}`}>PCI Service Provider Level 1 Certified</p>
+                    <p className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>Highest level of security certification</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className={`p-6 rounded-xl ${theme === "dark" ? "bg-gray-800" : "bg-gray-100"}`}>
+            <div className={`p-6 rounded-2xl ${theme === "dark" ? "bg-gray-800" : "bg-gray-100"}`}>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                <div className="w-14 h-14 bg-gradient-to-r from-amber-600 to-orange-600 rounded-2xl flex items-center justify-center">
+                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
                   </svg>
                 </div>
-                <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Contact Us</h2>
+                <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Security Bug Bounty Program</h2>
               </div>
-              <p className={`mb-4 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
-                If you have any questions about this Privacy Policy, please contact us at{" "}
-                <Link href="mailto:shopify.scraper.com@gmail.com" className="text-[#018589] font-semibold hover:underline">shopify.scraper.com@gmail.com</Link>
+              <p className={`mb-4 ${theme === "dark" ? "text-white" : "text-gray-600"}`}>
+                We work with security researchers to keep up with the state-of-the-art in web security. If you have discovered a web security flaw that impacts our products, please contact us.
               </p>
+              <Link href="mailto:shopify.scraper.com@gmail.com" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#018589] to-[#016a70] text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-[#018589]/25 transition-all">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                Report a Vulnerability
+              </Link>
             </div>
           </div>
         </div>

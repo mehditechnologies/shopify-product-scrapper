@@ -1,20 +1,11 @@
 "use client"
 
-import { useState, useEffect, useMemo } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 
 interface App {
-  name: string;
-  description: string;
-  category: string;
-}
-
-interface Particle {
-  left: number;
-  top: number;
-  delay: number;
-  duration: number;
+  [key: string]: string;
 }
 
 // store the url,status,apps.any error 
@@ -23,21 +14,6 @@ export default function AppDetector() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [apps, setApps] = useState<App[]>([]);
   const [error, setError] = useState("");
-  const [isVisible, setIsVisible] = useState(false);
-
-  // Animation particles  using usememo
-  const particles = useMemo<Particle[]>(() => {
-    return Array.from({ length: 50 }, () => ({
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      delay: Math.random() * 1,
-      duration: 3 + Math.random() * 4,
-    }));
-  }, []);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
 
   // handle detect function
   const handleDetect = async () => {
@@ -72,6 +48,48 @@ export default function AppDetector() {
     }
   };
 
+  const getCategoryForApp = (appName: string): string => {
+    const categories: Record<string, string> = {
+      "Klarna": "Payments",
+      "Afterpay": "Payments",
+      "Yotpo": "Reviews",
+      "Loox": "Reviews",
+      "Judge.me": "Reviews",
+      "Reconvert": "Post-Purchase",
+      "Zendesk": "Customer Support",
+      "LiveChat": "Customer Support",
+      "Tawk.to": "Customer Support",
+      "Intercom": "Customer Support",
+      "Privy": "Marketing",
+      "Mailchimp": "Email Marketing",
+      "Klaviyo": "Email Marketing",
+      "Segment": "Analytics",
+      "PushOwl": "Marketing",
+      "Smile": "Loyalty",
+      "OneSignal": "Marketing",
+      "OptinMonster": "Marketing",
+      "Stamped": "Reviews",
+      "Okendo": "Reviews",
+      "Reviews.io": "Reviews",
+      "Trustpilot": "Reviews",
+      "Fera": "Reviews",
+      "Vitals": "Analytics",
+      "Recart": "Marketing",
+      "Nosto": "Personalization",
+      "Freshworks": "Customer Support",
+      "Growave": "Social Proof",
+      "Pushcrew": "Marketing",
+      "Hotjar": "Analytics",
+      "Sumo": "Marketing",
+      "ManyChat": "Marketing",
+      "Tidio": "Customer Support",
+      "Drift": "Customer Support",
+      "Crisp": "Customer Support",
+      "Olark": "Customer Support",
+    };
+    return categories[appName] || "Other";
+  };
+
   return (
     <div className="min-h-screen relative overflow-hidden bg-[#0F1729]">
       {/* Animated Background */}
@@ -81,23 +99,7 @@ export default function AppDetector() {
         <div className="orb orb-2"></div>
         <div className="orb orb-3"></div>
         <div className="orb orb-4"></div>
-      
-        {/* Floating Particles */}
-        <div className="particles">
-          {particles.map((particle, i) => (
-            <div
-              key={i}
-              className="particle-dot"
-              style={{
-                left: `${particle.left}%`,
-                top: `${particle.top}%`,
-                animationDelay: `${particle.delay}s`,
-                animationDuration: `${particle.duration}s`
-              }}
-            />
-          ))}
-        </div>
-
+       
         {/* Noise Overlay */}
         <div className="noise-overlay"></div>
       </div>
@@ -105,7 +107,7 @@ export default function AppDetector() {
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 py-16">
         {/* Header Badge */}
-        <div className={`text-center mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="text-center mb-8">
           <span className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-[#018589]/20 to-[#01d4db]/20 border border-[#018589]/30 rounded-full text-[#01d4db] text-sm font-medium backdrop-blur-sm">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
@@ -115,19 +117,19 @@ export default function AppDetector() {
         </div>
 
         {/* Main Title */}
-        <h1 className={`text-5xl md:text-6xl font-bold text-center mb-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <h1 className="text-5xl md:text-6xl font-bold text-center mb-6">
           <span className="bg-linear-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
             Shopify App Detector
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className={`text-lg md:text-xl text-center text-gray-400 mb-12 max-w-2xl mx-auto transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <p className="text-lg md:text-xl text-center text-gray-400 mb-12 max-w-2xl mx-auto">
           Identify the Shopify Apps by inspecting any Shopify store. Simply type in the domain of a Shopify store.
         </p>
 
         {/* Input Section */}
-        <div className={`glass-card-animated p-8 rounded-2xl mb-12 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="glass-card-animated p-8 rounded-2xl mb-12">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
               <div className="absolute left-5 top-1/2 -translate-y-1/2 text-[#01d4db]">
@@ -192,32 +194,33 @@ export default function AppDetector() {
             
             {apps.length > 0 ? (
               <div className="grid gap-4">
-                {apps.map((app, index) => (
-                  <div
-                    key={index}
-                    className="group p-5 bg-[#0a1628] rounded-xl border border-[#018589]/20 hover:border-[#01d4db]/50 transition-all duration-300"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-white mb-1 group-hover:text-[#01d4db] transition-colors">
-                          {app.name}
-                        </h3>
-                        {app.description && (
-                          <p className="text-sm text-gray-400 mb-2">{app.description}</p>
-                        )}
-                        <span className="inline-block px-3 py-1 bg-[#018589]/10 text-[#01d4db] text-xs font-medium rounded-full">
-                          {app.category || 'Unknown Category'}
-                        </span>
-                      </div>
-                      <div className="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center">
-                        <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                        </svg>
+                {apps.map((app: any, index) => {
+                  const appName = typeof app === 'string' ? app : (app.name || app.value || app.domain || "Unknown");
+                  const category = getCategoryForApp(appName);
+                  return (
+                    <div
+                      key={index}
+                      className="group p-5 bg-[#0a1628] rounded-xl border border-[#018589]/20 hover:border-[#01d4db]/50 transition-all duration-300"
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-white mb-1 group-hover:text-[#01d4db] transition-colors">
+                            {appName}
+                          </h3>
+                          <span className="inline-block px-3 py-1 bg-[#018589]/10 text-[#01d4db] text-xs font-medium rounded-full">
+                            {category}
+                          </span>
+                        </div>
+                        <div className="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center">
+                          <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                          </svg>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             ) : (
               <div className="text-center py-12 text-gray-400">
@@ -231,7 +234,7 @@ export default function AppDetector() {
         )}
 
         {/* Features Section */}
-        <div className={`grid md:grid-cols-2 gap-6 mb-12 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
           <div className="glass-card-animated p-6 rounded-2xl group hover:scale-[1.02] transition-transform duration-300">
             <div className="w-12 h-12 bg-gradient-to-r from-[#8b5cf6] to-[#a78bfa] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -254,7 +257,7 @@ export default function AppDetector() {
         </div>
 
         {/* Other Tools Section */}
-        <div className={`text-center mb-12 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="text-center mb-12">
           <h2 className="text-2xl font-bold text-white mb-6">
             Other Free <span className="bg-linear-to-r from-[#018589] to-[#01d4db] bg-clip-text text-transparent">Tools</span>
           </h2>
@@ -286,7 +289,7 @@ export default function AppDetector() {
         </div>
 
         {/* CTA Section */}
-        <div className={`glass-card-animated p-8 rounded-2xl text-center transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="glass-card-animated p-8 rounded-2xl text-center">
           <h3 className="text-2xl font-bold text-white mb-4">
             Need to export products from any Shopify site?
           </h3>
@@ -312,11 +315,11 @@ export default function AppDetector() {
           </div>
           <Link href="/scrape" className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#018589] to-[#01d4db] text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-[#018589]/30 transition-all duration-300">
             <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7"/>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
             </svg>
             Shopify Products Scraper - Free Trial Available
             <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
             </svg>
           </Link>
         </div>

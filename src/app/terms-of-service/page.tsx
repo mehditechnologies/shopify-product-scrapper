@@ -37,7 +37,7 @@ export default function TermsOfService() {
 
             <div className="mb-8">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-[#018589] to-[#01d4db] rounded-2xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-linear-to-r from-cyan-800 to-blue-700 rounded-2xl flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                   </svg>
@@ -54,7 +54,7 @@ export default function TermsOfService() {
 
             <div className="mb-8">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-r to-pink-700 rounded-2xl flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
                   </svg>
@@ -71,7 +71,7 @@ export default function TermsOfService() {
 
             <div className="mb-8">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-r to-orange-700 rounded-2xl flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                   </svg>
@@ -85,7 +85,7 @@ export default function TermsOfService() {
 
             <div className="mb-8">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-r  to-emerald-700 rounded-2xl flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
@@ -99,7 +99,7 @@ export default function TermsOfService() {
 
             <div className={`p-6 rounded-xl ${theme === "dark" ? "bg-gray-800" : "bg-gray-100"}`}>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-r  to-cyan-700 rounded-2xl flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                   </svg>
@@ -108,7 +108,7 @@ export default function TermsOfService() {
               </div>
               <p className={`mb-4 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
                 If you would like to contact us to understand more about this Agreement or wish to contact us concerning any matter relating to it, you may send an email to{" "}
-                <Link href="mailto:shopify.scraper.com@gmail.com" className="text-[#018589] font-semibold hover:underline">shopify.scraper.com@gmail.com</Link>
+                <Link href="mailto:shopify.scraper.com@gmail.com" className="text-[#018589] font-semibold hover:underline">abc@gmail.com</Link>
               </p>
             </div>
           </div>
