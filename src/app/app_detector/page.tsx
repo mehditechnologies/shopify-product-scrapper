@@ -1,11 +1,21 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 
 interface App {
   [key: string]: string;
+}
+
+interface Particle {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  opacity: number;
+  duration: number;
+  delay: number;
 }
 
 // store the url,status,apps.any error 
@@ -14,6 +24,22 @@ export default function AppDetector() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [apps, setApps] = useState<App[]>([]);
   const [error, setError] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+  const [particles, setParticles] = useState<Particle[]>([]);
+
+  useEffect(() => {
+    setIsVisible(true);
+    const newParticles = [...Array(10)].map((_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 4 + 2,
+      opacity: Math.random() * 0.5 + 0.1,
+      duration: Math.random() * 10 + 10,
+      delay: Math.random() * 10,
+    }));
+    setParticles(newParticles);
+  }, []);
 
   // handle detect function
   const handleDetect = async () => {
@@ -92,6 +118,34 @@ export default function AppDetector() {
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-[#0F1729]">
+      {/* Particles Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {particles.map((particle) => (
+          <div
+            key={particle.id}
+            className="absolute rounded-full bg-[#01d4db]"
+            style={{
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+              opacity: isVisible ? particle.opacity : 0,
+              animation: `float-particle ${particle.duration}s linear infinite`,
+              animationDelay: isVisible ? `${particle.delay}s` : '0s',
+              transition: 'opacity 1s ease-in-out',
+            }}
+          />
+        ))}
+      </div>
+      <style jsx global>{`
+        @keyframes float-particle {
+          0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+          10% { opacity: 0.5; }
+          90% { opacity: 0.5; }
+          100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+      `}</style>
+
       {/* Animated Background */}
       <div className="animated-bg">
         {/* Gradient Orbs */}
