@@ -1,24 +1,45 @@
 "use client"
-//import usestate
-import { useState } from "react";
+
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 
 
-export default function Appdetector() {
-//First store the url 
+interface App {
+  name: string;
+  description: string;
+  category: string;
+}
+
+interface Particle {
+  left: number;
+  top: number;
+  delay: number;
+  duration: number;
+}
+
+// store the url,status,apps.any error 
+export default function AppDetector() {
   const [storeUrl, setStoreUrl] = useState("");
-//store status
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-//Store fetched apps with name and id in usestate
-  const [app, setApp] = useState<{
-    name: string;
-    id: string | null;
-  } | null>(null);
-
-//store any error not found apps
+  const [apps, setApps] = useState<App[]>([]);
   const [error, setError] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
 
-//Now use handle detect function
+  // Animation particles  using usememo
+  const particles = useMemo<Particle[]>(() => {
+    return Array.from({ length: 50 }, () => ({
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      delay: Math.random() * 1,
+      duration: 3 + Math.random() * 4,
+    }));
+  }, []);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  // handle detect function
   const handleDetect = async () => {
     if (!storeUrl) {
       setError("Please enter a store URL");
@@ -27,9 +48,9 @@ export default function Appdetector() {
 
     setError("");
     setStatus("loading");
-//Now hit api to fetch data from backend
+
     try {
-      const response = await fetch("/api/app-detect", {
+      const response = await fetch("/api/detect-apps", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url: storeUrl }),
@@ -43,7 +64,7 @@ export default function Appdetector() {
         return;
       }
 
-      setApp(data.app);
+      setApps(data.apps || []);
       setStatus("success");
     } catch (err) {
       setError("Something went wrong. Please try again.");
@@ -52,85 +73,211 @@ export default function Appdetector() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0F1729] p-20">
-      <div className="max-w-3xl mx-auto">
-        {/* Header - Keep Your Original Design */}
-        <span className=" p-3 m-80 text-lg bg-[#0C313F] rounded-full text-[#298db2]">Free Tool</span>
-        <h1 className="text-4xl pt-10 font-bold text-center mb-5">
-          Shopify<span className="text-[#298db2]"> Apps Detector</span>
+    <div className="min-h-screen relative overflow-hidden bg-[#0F1729]">
+      {/* Animated Background */}
+      <div className="animated-bg">
+        {/* Gradient Orbs */}
+        <div className="orb orb-1"></div>
+        <div className="orb orb-2"></div>
+        <div className="orb orb-3"></div>
+        <div className="orb orb-4"></div>
+      
+        {/* Floating Particles */}
+        <div className="particles">
+          {particles.map((particle, i) => (
+            <div
+              key={i}
+              className="particle-dot"
+              style={{
+                left: `${particle.left}%`,
+                top: `${particle.top}%`,
+                animationDelay: `${particle.delay}s`,
+                animationDuration: `${particle.duration}s`
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Noise Overlay */}
+        <div className="noise-overlay"></div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-5xl mx-auto px-6 py-16">
+        {/* Header Badge */}
+        <div className={`text-center mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <span className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-[#018589]/20 to-[#01d4db]/20 border border-[#018589]/30 rounded-full text-[#01d4db] text-sm font-medium backdrop-blur-sm">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+            Free Tool
+          </span>
+        </div>
+
+        {/* Main Title */}
+        <h1 className={`text-5xl md:text-6xl font-bold text-center mb-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <span className="bg-linear-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+            Shopify App Detector
+          </span>
         </h1>
-        <p className="text-lg font-medium text-center mb-8">
-          Identify the Shopify apps by inspecting any Shopify store. Simply type in the domain of a Shopify store.
+
+        {/* Subtitle */}
+        <p className={`text-lg md:text-xl text-center text-gray-400 mb-12 max-w-2xl mx-auto transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          Identify the Shopify Apps by inspecting any Shopify store. Simply type in the domain of a Shopify store.
         </p>
 
-        {/* Input Form - Keep Your Original Design */}
-        <div className="bg-[#192642] p-6 rounded-xl mb-10">
-          <label className="block text-md font-medium mb-3 text-white">
-            Shopify Store URL
-          </label>
-          <div className="flex gap-4">
-            <input
-              type="url"
-              value={storeUrl}
-              onChange={(e) => setStoreUrl(e.target.value)}
-              placeholder="Enter Shopify store URL e.g https://example.myshopify.com"
-              className="flex-1 px-4 py-3 bg-[#0F1729] border-3 border-[#017075] rounded-full focus:outline-none text-white placeholder-gray-500"
-            />
+        {/* Input Section */}
+        <div className={`glass-card-animated p-8 rounded-2xl mb-12 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex-1 relative">
+              <div className="absolute left-5 top-1/2 -translate-y-1/2 text-[#01d4db]">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                </svg>
+              </div>
+              <input
+                type="url"
+                value={storeUrl}
+                onChange={(e) => setStoreUrl(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleDetect()}
+                placeholder="Enter Shopify store URL e.g. https://example.myshopify.com"
+                className="w-full pl-14 pr-4 py-4 bg-[#0a1628] border-2 border-[#018589]/30 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#01d4db] focus:ring-2 focus:ring-[#01d4db]/20 transition-all"
+              />
+            </div>
             <button
               onClick={handleDetect}
               disabled={status === "loading"}
-              className="px-6 py-3 bg-[#e4ecec] text-[#017075] rounded-lg font-medium disabled:opacity-50 hover:bg-white transition-colors"
+              className="group px-8 py-4 bg-linear-to-r from-[#018589] to-[#01d4db] text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-[#018589]/30 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50"
             >
-              {status === "loading" ? "Detecting..." : "Detect apps"}
+              {status === "loading" ? (
+                <>
+                  <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                  </svg>
+                  Detecting...
+                </>
+              ) : (
+                <>
+                  <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                  </svg>
+                  Detect Apps
+                </>
+              )}
             </button>
           </div>
 
           {error && (
-            <p className="text-red-500 mt-2">{error}</p>
+            <div className="mt-4 p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm flex items-center gap-2">
+              <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              {error}
+            </div>
           )}
         </div>
 
-        {status === "success" && app && (
-          <div className="bg-[#162035] p-6 rounded-xl mb-8">
-            <h2 className="text-xl font-semibold mb-4 text-white">Detected apps</h2>
-            <div className="space-y-3">
-              <div className="flex justify-between p-3 bg-[#0F1729] rounded-lg">
-                <span className="text-gray-400">app Name</span>
-                <span className="font-medium text-white">{app.name}</span>
-              </div>
-              <div className="flex justify-between p-3 bg-[#0F1729] rounded-lg">
-                <span className="text-gray-400">app ID</span>
-                <span className="font-medium text-white">{app.id || "Unknown"}</span>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Other Free Tools - Added from reference */}
-        <div className="py-8">
-          <h2 className="text-2xl font-bold text-center text-white mb-6">
-            Other Free <span className="text-[#257b9b]">Tools</span>
-          </h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="flex items-center gap-4 p-4 rounded-xl border-[#257b9b] bg-[#257b9b]/10">
-              <div className="w-12 h-12 bg-linear-to-r from-[#018589] to-[#01d4db] rounded-xl flex items-center justify-center flex-shrink-0">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
-                </svg>
-              </div>
-              <div>
-                <h3 className="font-semibold text-white">Shopify theme Detector</h3>
-                <p className="text-sm text-gray-400">Identify any Shopify app</p>
-              </div>
-            </div>
-
-            <Link href="/tools/shopify-app-detector" className="flex items-center gap-4 p-4 rounded-xl border border-gray-700 hover:border-[#257b9b] hover:bg-[#257b9b]/5 transition-all">
-              <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        {/* Results Section */}
+        {status === "success" && (
+          <div className="glass-card-animated p-8 rounded-2xl mb-12 animate-fade-in">
+            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-[#018589] to-[#01d4db] rounded-lg flex items-center justify-center">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
                 </svg>
               </div>
-              <div>
+              Detected Apps ({apps.length})
+            </h2>
+            
+            {apps.length > 0 ? (
+              <div className="grid gap-4">
+                {apps.map((app, index) => (
+                  <div
+                    key={index}
+                    className="group p-5 bg-[#0a1628] rounded-xl border border-[#018589]/20 hover:border-[#01d4db]/50 transition-all duration-300"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white mb-1 group-hover:text-[#01d4db] transition-colors">
+                          {app.name}
+                        </h3>
+                        {app.description && (
+                          <p className="text-sm text-gray-400 mb-2">{app.description}</p>
+                        )}
+                        <span className="inline-block px-3 py-1 bg-[#018589]/10 text-[#01d4db] text-xs font-medium rounded-full">
+                          {app.category || 'Unknown Category'}
+                        </span>
+                      </div>
+                      <div className="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center">
+                        <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12 text-gray-400">
+                <svg className="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <p>No apps detected. The store might not have any detectable apps or may not be a Shopify store.</p>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Features Section */}
+        <div className={`grid md:grid-cols-2 gap-6 mb-12 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="glass-card-animated p-6 rounded-2xl group hover:scale-[1.02] transition-transform duration-300">
+            <div className="w-12 h-12 bg-gradient-to-r from-[#8b5cf6] to-[#a78bfa] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">Get Shopify Apps from competitor stores</h3>
+            <p className="text-gray-400">Instantly identify active apps on your Shopify store with our built-in detector. Save time and make informed decisions to optimize your e-commerce strategy.</p>
+          </div>
+
+          <div className="glass-card-animated p-6 rounded-2xl group hover:scale-[1.02] transition-transform duration-300">
+            <div className="w-12 h-12 bg-gradient-to-r from-[#ec4899] to-[#f472b6] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">Streamline your Shopify store management</h3>
+            <p className="text-gray-400">Quickly detect all installed apps. Evaluate their impact and simplify your e-commerce experience.</p>
+          </div>
+        </div>
+
+        {/* Other Tools Section */}
+        <div className={`text-center mb-12 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h2 className="text-2xl font-bold text-white mb-6">
+            Other Free <span className="bg-linear-to-r from-[#018589] to-[#01d4db] bg-clip-text text-transparent">Tools</span>
+          </h2>
+          <div className="flex justify-center  gap-4">
+            <Link href="/theme_detector" className="group flex items-center gap-3 px-6 py-4 bg-[#162035] rounded-xl border-2 border-[#018589]/30 hover:border-[#01d4db] transition-all duration-300">
+              <div className="w-10 h-10 bg-linear-to-r from-[#018589] to-[#01d4db] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                </svg>
+              </div>
+              <div className="text-left">
+                <h3 className="font-semibold text-white">Shopify Theme Detector</h3>
+                <p className="text-sm text-gray-400">Identify any Shopify theme</p>
+              </div>
+            </Link>
+
+            <Link href="/app_detector" className="group flex items-center gap-3 px-6 py-4 bg-[#162035] rounded-xl border-2 border-[#8b5cf6]/30 hover:border-[#8b5cf6] transition-all duration-300">
+              <div className="w-10 h-10 bg-gradient-to-r from-[#8b5cf6] to-[#a78bfa] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                </svg>
+              </div>
+              <div className="text-left">
                 <h3 className="font-semibold text-white">Shopify App Detector</h3>
                 <p className="text-sm text-gray-400">Discover installed apps</p>
               </div>
@@ -138,37 +285,37 @@ export default function Appdetector() {
           </div>
         </div>
 
-        {/* CTA Section - Added from reference */}
-        <div className="text-center py-8">
-          <h3 className="text-xl font-bold text-white mb-4">
-            Need to export products from a Shopify site?
+        {/* CTA Section */}
+        <div className={`glass-card-animated p-8 rounded-2xl text-center transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h3 className="text-2xl font-bold text-white mb-4">
+            Need to export products from any Shopify site?
           </h3>
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
+          <div className="flex flex-wrap justify-center gap-6 mb-6">
             <div className="flex items-center gap-2 text-gray-400">
-              <svg className="w-5 h-5 text-[#257b9b]" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-[#01d4db]" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
               </svg>
               <span>No difficulty</span>
             </div>
             <div className="flex items-center gap-2 text-gray-400">
-              <svg className="w-5 h-5 text-[#257b9b]" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-[#01d4db]" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
               </svg>
               <span>No complicated process</span>
             </div>
             <div className="flex items-center gap-2 text-gray-400">
-              <svg className="w-5 h-5 text-[#257b9b]" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-[#01d4db]" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
               </svg>
               <span>Choose the best products</span>
             </div>
           </div>
-          <Link href="/scrape" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#018589] to-[#01d4db] text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-[#018589]/25 transition-all">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <Link href="/scrape" className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#018589] to-[#01d4db] text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-[#018589]/30 transition-all duration-300">
+            <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7"/>
             </svg>
             Shopify Products Scraper - Free Trial Available
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
           </Link>
