@@ -24,7 +24,7 @@ export default function TermsOfService() {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className=" max-w-4xl mx-auto">
           <div className={`glass-card p-8 md:p-12 rounded-2xl`}>
             <div className="mb-8">
               <p className={`leading-relaxed ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>

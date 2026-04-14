@@ -15,7 +15,7 @@ export default function Header() {
           {/* Logo section */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2">
-              <div className={`w-8 h-8 rounded-lg flex animate-spin items-center justify-center ${theme === "dark" ? "bg-[#0F1729]" : "bg-[#017F83]"}`}>
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${theme === "dark" ? "bg-[#0F1729]" : "bg-[#017F83]"}`}>
                 <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
                 </svg>

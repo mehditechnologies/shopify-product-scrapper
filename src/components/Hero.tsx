@@ -10,13 +10,14 @@ export default function Hero() {
     <section className={`relative min-h-screen overflow-hidden ${theme === "dark" ? "bg-[#0F1729]" : "bg-gradient-to-b from-gray-50 to-white"}`}>
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="blob-1 animate-blob"></div>
+        <div className="blob-1 animate-blob "></div>
         <div className="blob-2 animate-blob animation-delay-2000"></div>
         <div className="blob-3 animate-blob animation-delay-4000"></div>
         <div className="particle particle-1"></div>
         <div className="particle particle-2"></div>
         <div className="particle particle-3"></div>
         <div className="particle particle-4"></div>
+        
       </div>
 
       <div className="relative container mx-auto px-4 py-20 lg:py-32">
@@ -84,7 +85,7 @@ export default function Hero() {
           {/* Right: Scraping Illustration */}
           <div className="relative ">
               {/* Glow Effect */}
-              <div className="absolute inset-0 bg-linear-to-r from-primary/30 to-secondary/30 rounded-3xl blur-3xl"></div>
+              <div className="absolute inset-0 bg-linear-to-br from-primary/30 to-secondary/30 blur-3xl"></div>
 
               {/* Main Illustration */}
               <div className="relative flex items-center justify-center gap-4">
