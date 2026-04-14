@@ -11,10 +11,11 @@ export default function Header() {
     <header className={`sticky top-1 border-b ${theme === "dark" ? "bg-[#0F1729] border-[#2d3f5f]" : "bg-white border-gray-200"}`}>
       <div className="max-w-7xl mx-auto p-3 lg:px-10">
         <div className="flex justify-between items-center h-16">
+
           {/* Logo section */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2">
-              <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${theme === "dark" ? "bg-[#0F1729]" : "bg-[#017F83]"}`}>
+              <div className={`w-8 h-8 rounded-lg flex animate-spin items-center justify-center ${theme === "dark" ? "bg-[#0F1729]" : "bg-[#017F83]"}`}>
                 <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
                 </svg>
@@ -25,7 +26,7 @@ export default function Header() {
           
           {/* Navigation links */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="/scrape" className={`font-medium hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
+            <Link href="/scrape" className={`btn-gradient rounded p-2 px-3 hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
               Try it now
             </Link>
             <Link href="/#features" className={`font-medium hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>

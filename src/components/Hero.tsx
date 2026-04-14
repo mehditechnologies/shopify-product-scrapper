@@ -51,7 +51,7 @@ export default function Hero() {
               <Link href="/scrape" className="btn-gradient px-8 py-4 rounded-xl text-lg">
                 <span className="flex items-center gap-2">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                   Try It Now - Free
                 </span>
@@ -70,8 +70,8 @@ export default function Hero() {
                 </svg>
                 Chrome Extension
               </a>
-              <button type="button" className="inline-flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-secondary dark:hover:text-secondary transition-colors group">
-                <span className="w-10 h-10 bg-linear-to-r from-secondary to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 transition-transform">
+              <button type="button" className="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-secondary dark:hover:text-secondary transition-colors group">
+                <span className="w-10 h-10 bg-linear-to-br from-primary to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 transition-transform">
                   <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z" />
                   </svg>
