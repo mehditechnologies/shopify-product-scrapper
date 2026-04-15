@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     
-    <header className={`sticky top-1 border-b ${theme === "dark" ? "bg-[#0F1729] border-[#2d3f5f]" : "bg-white border-gray-200"}`}>
+    <header className={`sticky top-0 z-50 border-b ${theme === "dark" ? "bg-[#0F1729]/95 border-[#2d3f5f]" : "bg-white/95 border-gray-200"} backdrop-blur-sm`}>
       <div className="max-w-7xl mx-auto p-3 lg:px-10">
         <div className="flex justify-between items-center h-16">
 

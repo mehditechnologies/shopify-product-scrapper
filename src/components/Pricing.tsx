@@ -8,17 +8,17 @@ export default function Pricing() {
   
   return (
     <section id="pricing" className={`py-20 ${theme === "dark" ? "bg-gray-800" : "bg-gray-50"}`}>
-      <div className="text-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className=" text-5xl font-bold text-gray-900 dark:text-white mb-4">
-           Choose Your<span className="text-[#018589]"> Plan</span>
-           
+      <div className="text-center max-w-7xl mx-auto px-4">
+        <h2 className={`text-5xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+            Choose Your<span className="text-[#018589]"> Plan</span>
+            
           </h2>
-          <p className=" text-lg mb-20">
+          <p className={`text-lg mb-20 ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
             Let's choose the package that is best for you and explore it happily and cheerfully.
           </p>
       {/* pricing plans columns */}
 
-        <div className="grid md:grid-cols-2 gap-2 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
           <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-8">
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Free Plan</h3>
             <p className="text-gray-500 dark:text-gray-400 mb-4">Perfect to get started</p>

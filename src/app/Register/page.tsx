@@ -17,7 +17,7 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-[#0F1729]">
+    <div className={`min-h-screen relative overflow-hidden ${theme === "dark" ? "bg-[#0F1729]" : "bg-white"}`}>
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(20)].map((_, i) => (
           <div
@@ -59,15 +59,15 @@ export default function Register() {
             </svg>
             Get Started
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mt-8 mb-4">
+          <h1 className={`text-4xl md:text-5xl font-bold mt-8 mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
             Create <span className="text-[#01d4db]">Account</span>
           </h1>
-          <p className="text-gray-400">
+          <p className={theme === "dark" ? "text-gray-400" : "text-gray-600"}>
             Sign up to start scraping Shopify stores
           </p>
         </div>
 
-        <div className="glass-card-animated p-8 rounded-2xl">
+        <div className={`glass-card-animated p-8 rounded-2xl ${theme === "dark" ? "bg-[#162035]" : "bg-gray-50 border border-gray-200"}`}>
           {status === "success" ? (
             <div className="text-center py-8">
               <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -75,8 +75,8 @@ export default function Register() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Account created!</h3>
-              <p className="text-gray-400 mb-4">Welcome to Shopify Scraper</p>
+              <h3 className={`text-xl font-semibold mb-2 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Account created!</h3>
+              <p className={`mb-4 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>Welcome to Shopify Scraper</p>
               <Link href="/scrape" className="text-[#01d4db] hover:underline">
                 Go to dashboard
               </Link>
@@ -84,49 +84,49 @@ export default function Register() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-sm font-medium -ml-[20%] text-gray-300 mb-3">Full Name *</label>
+                <label className={`block text-sm font-medium -ml-[20%] mb-3 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Full Name *</label>
                 <input
                   type="text"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-[150%] -ml-[20%] px-4 py-3 bg-[#0a1628] border border-[#018589]/30 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#01d4db] focus:ring-2 focus:ring-[#01d4db]/20 transition-all"
+                  className={`w-[150%] -ml-[20%] px-4 py-3 rounded-xl border transition-all focus:ring-2 ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-300 text-gray-900 placeholder-gray-400"}`}
                   placeholder="John Doe"
                 />
               </div>
 
               <div>
-                <label className="block text-sm -ml-[20%] font-medium text-gray-300 mb-2">Email *</label>
+                <label className={`block text-sm -ml-[20%] font-medium mb-2 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Email *</label>
                 <input
                   type="email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-[150%] -ml-[20%] px-4 py-3 bg-[#0a1628] border border-[#018589]/30 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#01d4db] focus:ring-2 focus:ring-[#01d4db]/20 transition-all"
+                  className={`w-[150%] -ml-[20%] px-4 py-3 rounded-xl border transition-all focus:ring-2 ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-300 text-gray-900 placeholder-gray-400"}`}
                   placeholder="your@email.com"
                 />
               </div>
               
               <div>
-                <label className="block text-sm -ml-[20%] font-medium text-gray-300 mb-2">Password *</label>
+                <label className={`block text-sm -ml-[20%] font-medium mb-2 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Password *</label>
                 <input
                   type="password"
                   required
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="w-[150%] -ml-[20%] px-4 py-3 bg-[#0a1628] border border-[#018589]/30 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#01d4db] focus:ring-2 focus:ring-[#01d4db]/20 transition-all"
+                  className={`w-[150%] -ml-[20%] px-4 py-3 rounded-xl border transition-all focus:ring-2 ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-300 text-gray-900 placeholder-gray-400"}`}
                   placeholder="At least 6 characters"
                 />
               </div>
 
               <div>
-                <label className="block text-sm -ml-[20%] font-medium text-gray-300 mb-2">Confirm Password *</label>
+                <label className={`block text-sm -ml-[20%] font-medium mb-2 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Confirm Password *</label>
                 <input
                   type="password"
                   required
                   value={formData.confirmPassword}
                   onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                  className="w-[150%] -ml-[20%] px-4 py-3 bg-[#0a1628] border border-[#018589]/30 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#01d4db] focus:ring-2 focus:ring-[#01d4db]/20 transition-all"
+                  className={`w-[150%] -ml-[20%] px-4 py-3 rounded-xl border transition-all focus:ring-2 ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-300 text-gray-900 placeholder-gray-400"}`}
                   placeholder="Confirm your password"
                 />
               </div>

@@ -21,9 +21,9 @@ export default function Hero() {
       </div>
 
       <div className="relative container mx-auto px-4 py-20 lg:py-32">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
           {/* Left: Content */}
-          <div className="max-w-4xl lg:text-left animate-slide-in-left">
+          <div className="max-w-2xl lg:text-left animate-slide-in-left">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 dark:bg-primary/20 border border-primary/30 rounded-full text-primary font-medium mb-6">
               <span className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -37,12 +37,12 @@ export default function Hero() {
               <span className="text-[#017F83]"> Shopify Scraper</span>
             </h1>
 
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0">
+            <p className={`text-lg mb-8 max-w-xl mx-auto lg:mx-0 ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
               Did you know that most Shopify sellers with <span className="text-[#017F83] font-semibold">millions of sales </span>
               can create online stores of <span className="text-[#017F83] font-semibold">1000+ products</span> in under <span className="text-[#017F83] font-semibold">one minute</span>?
             </p>
 
-            <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0">
+            <p className={`text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0 ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
               <strong className="text-[#017F83]">Shopify Scraper</strong> is a powerful shopify product <strong className="text-gray-900 dark:text-white">exporting tool</strong>.
               Export products from any Shopify store in CSV format with blistering ease and speed.
             </p>
@@ -83,7 +83,7 @@ export default function Hero() {
           </div>
 
           {/* Right: Scraping Illustration */}
-          <div className="relative ">
+          <div className="relative lg:ml-20">
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-linear-to-br from-primary/30 to-secondary/30 blur-3xl"></div>
 

@@ -17,7 +17,7 @@ export default function SignIn() {
   }
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-[#0F1729]">
+    <div className={`min-h-screen relative overflow-hidden ${theme === "dark" ? "bg-[#0F1729]" : "bg-white"}`}>
       <div className="absolute inset-0 ">
         {[...Array(20)].map((_, i) => (
           <div
@@ -58,15 +58,15 @@ export default function SignIn() {
             </svg>
             Welcome Back
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mt-8 mb-4">
+          <h1 className={`text-4xl md:text-5xl font-bold mt-8 mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
             Sign <span className="text-[#01d4db]">In</span>
           </h1>
-          <p className="text-gray-400">
+          <p className={theme === "dark" ? "text-gray-400" : "text-gray-600"}>
             Sign in to access your dashboard
           </p>
         </div>
 
-        <div className="glass-card-animated p-8 rounded-2xl">
+        <div className={`glass-card-animated p-8 rounded-2xl ${theme === "dark" ? "bg-[#162035]" : "bg-gray-50 border border-gray-200"}`}>
           {status === "success" ? (
             <div className="text-center py-8">
               <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -74,8 +74,8 @@ export default function SignIn() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Welcome back!</h3>
-              <p className="text-gray-400 mb-4">Redirecting to dashboard...</p>
+              <h3 className={`text-xl font-semibold mb-2 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Welcome back!</h3>
+              <p className={`mb-4 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>Redirecting to dashboard...</p>
               <Link href="/" className="text-[#01d4db] hover:underline">
                 Go to homepage
               </Link>
@@ -83,33 +83,33 @@ export default function SignIn() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Email *</label>
+                <label className={`block text-sm font-medium mb-2 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Email *</label>
                 <input
                   type="email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-[#0a1628] border border-[#018589]/30 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#01d4db] focus:ring-2 focus:ring-[#01d4db]/20 transition-all"
+                  className={`w-full px-4 py-3 rounded-xl border transition-all focus:ring-2 ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-300 text-gray-900 placeholder-gray-400"}`}
                   placeholder="your@email.com"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Password *</label>
+                <label className={`block text-sm font-medium mb-2 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Password *</label>
                 <input
                   type="password"
                   required
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="w-full px-4 py-3 bg-[#0a1628] border border-[#018589]/30 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#01d4db] focus:ring-2 focus:ring-[#01d4db]/20 transition-all"
+                  className={`w-full px-4 py-3 rounded-xl border transition-all focus:ring-2 ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-300 text-gray-900 placeholder-gray-400"}`}
                   placeholder="Enter your password"
                 />
               </div>
 
               <div className="flex items-center justify-between">
                 <label className="flex items-center">
-                  <input type="checkbox" className="w-4 h-4 rounded border-gray-600 bg-[#0a1628] text-[#01d4db] focus:ring-[#01d4db]" />
-                  <span className="ml-2 text-sm text-gray-400">Remember me</span>
+                  <input type="checkbox" className={`w-4 h-4 rounded ${theme === "dark" ? "border-gray-600 bg-[#0a1628]" : "border-gray-300 bg-white"}`} />
+                  <span className={`ml-2 text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>Remember me</span>
                 </label>
                 <Link href="/forgot-password" className="text-sm text-[#01d4db] hover:underline">
                   Forgot password?

@@ -8,7 +8,7 @@ export default function Footer() {
   
   return (
     <footer className={`border-t ${theme === "dark" ? "bg-[#0F1729] border-[#2d3f5f]" : "bg-gray-50 border-gray-200"}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-5 gap-8">
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
@@ -20,7 +20,7 @@ export default function Footer() {
               <span className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>ShopifyScraper</span>
             </Link>
             <p className={`mb-4 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
-              Shopify Scraper the best shopify product exporting tool on the global market
+              Shopify Scraper the best shopify product exporting tool on <br></br> the global market
             </p>
             <div className="flex gap-4">
               <a
