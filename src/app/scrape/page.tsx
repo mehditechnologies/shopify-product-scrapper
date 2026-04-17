@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useTheme } from "@/components/ThemeProvider";
 
 // It allows users to enter a Shopify store URL and export products
 export default function ScrapePage() {
+  const { theme } = useTheme();
   //Now what to store using states
   // store user type url of website
   const [shopUrl, setShopUrl] = useState("");
@@ -116,18 +118,18 @@ export default function ScrapePage() {
   };
 
   return (
-    <div className=" min-h-screen bg-[#0F1729] p-20">
+    <div className="min-h-screen p-20" style={{ backgroundColor: theme === "dark" ? "#0F1729" : "#ffffff" }}>
       <div className="max-w-3xl mx-auto">
         {/* Page Header */}
-        <span className="p-3 m-76 bg-[#0C313F] rounded-full">Product Scraper</span>
-        <h1 className=" text-center text-4xl font-bold mb-4 mt-10">Scrape <span className="text-[#018589]">Products</span></h1>
-        <p className="text-center text-lg mb-8">
+        <span className="p-3 m-76 rounded-full text-white" style={{ backgroundColor: theme === "dark" ? "#0C313F" : "#018589" }}>Product Scraper</span>
+        <h1 className="text-center text-4xl font-bold mb-4 mt-10" style={{ color: theme === "dark" ? "#fff" : "#111827" }}>Scrape <span className="text-[#018589]">Products</span></h1>
+        <p className="text-center text-lg mb-8" style={{ color: theme === "dark" ? "#9ca3af" : "#4b5563" }}>
           Enter a Shopify store URL to scrape and export products
         </p>
 
         {/* Input Section */}
-        <div className="bg-[#162035] p-7 rounded-3xl mb-8">
-          <label className="inline-block text-lg font-medium mb-4">
+        <div className="p-7 rounded-3xl mb-8" style={{ backgroundColor: theme === "dark" ? "#162035" : "#ffffff", border: theme === "light" ? "1px solid #e5e7eb" : "none" }}>
+          <label className="inline-block text-lg font-medium mb-4" style={{ color: theme === "dark" ? "#fff" : "#111827" }}>
             Shopify Store URL
           </label>
           <div className="flex gap-4">
@@ -136,12 +138,14 @@ export default function ScrapePage() {
               value={shopUrl}
               onChange={(e) => setShopUrl(e.target.value)}
               placeholder="https://example.myshopify.com"
-              className="flex-1 px-5 py-4 bg-[#0F1729] border-2 border-[#018D92] rounded-lg focus:outline-4 focus:border-[#d5ecec]"
+              className="flex-1 px-5 py-4 border-2 rounded-lg focus:outline-4"
+              style={{ backgroundColor: theme === "dark" ? "#0F1729" : "#ffffff", borderColor: theme === "dark" ? "#018D92" : "#d1d5db", color: theme === "dark" ? "#fff" : "#111827" }}
             />
             <button
               onClick={handleScrape}
               disabled={status === "loading"}
-              className="px-6 py-3 bg-[#018589] hover:bg-[#017075] rounded-lg font-medium disabled:opacity-50"
+              className="px-6 py-3 rounded-lg font-medium disabled:opacity-50"
+              style={{ backgroundColor: "#018589", color: "#fff" }}
             >
               {status === "loading" ? "Scraping..." : "Scrape"}
             </button>
@@ -155,14 +159,15 @@ export default function ScrapePage() {
 
         {/* Results Section - Only show after successful scrape */}
         {status === "success" && (
-          <div className="bg-[#162035] p-6 rounded-xl">
+          <div className="p-6 rounded-xl" style={{ backgroundColor: theme === "dark" ? "#162035" : "#ffffff" }}>
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-semibold">
+              <h2 className="text-xl font-semibold" style={{ color: theme === "dark" ? "#fff" : "#111827" }}>
                 Found {products.length} products
               </h2>
               <button
                 onClick={handleExport}
-                className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg"
+                className="px-4 py-2 rounded-lg font-medium text-white"
+                style={{ backgroundColor: "#018589" }}
               >
                 Export CSV
               </button>
@@ -171,7 +176,7 @@ export default function ScrapePage() {
             {/* Products List with images first */}
             <div className="space-y-3">
               {products.map((product: any, idx: number) => (
-                <div key={idx} className="flex items-center p-4 bg-[#0F1729] rounded-full gap-4">
+                <div key={idx} className="flex items-center p-4 rounded-full gap-4" style={{ backgroundColor: theme === "dark" ? "#0F1729" : "#f3f4f6" }}>
                   {product.images?.[0]?.src && (
                     <img 
                       src={product.images[0].src} 
@@ -179,12 +184,12 @@ export default function ScrapePage() {
                       className="w-16 h-16 object-cover rounded-lg flex-shrink-0"
                     />
                   )}
-                  <span className="flex-1 font-medium">{product.title}</span>
+                  <span className="flex-1 font-medium" style={{ color: theme === "dark" ? "#fff" : "#111827" }}>{product.title}</span>
                   <div className="text-right">
-                    <span className="text-[#018589] font-medium">
+                    <span className="font-medium" style={{ color: "#018589" }}>
                       {product.variants ? `$${product.variants[0]?.price || 'N/A'}` : 'N/A'}
                     </span>
-                    <span className="text-gray-500 text-sm ml-2">
+                    <span className="text-sm ml-2" style={{ color: theme === "dark" ? "#9ca3af" : "#6b7280" }}>
                       ({product.variants?.length || 0} variants)
                     </span>
                   </div>

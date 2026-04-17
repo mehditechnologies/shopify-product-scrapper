@@ -2,9 +2,11 @@
 //import usestate
 import { useState } from "react";
 import Link from "next/link";
+import { useTheme } from "@/components/ThemeProvider";
 
 
 export default function ThemeDetector() {
+  const { theme: appTheme } = useTheme();
 //First store the url 
   const [storeUrl, setStoreUrl] = useState("");
 //store status.
@@ -52,20 +54,20 @@ export default function ThemeDetector() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0F1729] p-20">
+    <div className={`min-h-screen p-20 ${appTheme === "dark" ? "bg-[#0F1729]" : "bg-gray-50"}`}>
       <div className="max-w-3xl mx-auto">
         {/* Header - Keep Your Original Design */}
-        <span className=" p-3 m-80 text-lg bg-[#0C313F] rounded-full text-[#298db2]">Free Tool</span>
-        <h1 className="text-4xl pt-10 font-bold text-center mb-5">
+        <span className={`p-3 m-80 text-lg rounded-full ${appTheme === "dark" ? "bg-[#0C313F] text-[#298db2]" : "bg-[#018589] text-white"}`}>Free Tool</span>
+        <h1 className={`text-4xl pt-10 font-bold text-center mb-5 ${appTheme === "dark" ? "text-white" : "text-gray-900"}`}>
           Shopify<span className="text-[#298db2]"> Theme Detector</span>
         </h1>
-        <p className="text-lg font-medium text-center mb-8">
+        <p className={`text-lg font-medium text-center mb-8 ${appTheme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
           Identify the Shopify theme by inspecting any Shopify store. Simply type in the domain of a Shopify store.
         </p>
 
         {/* Input Form - Keep Your Original Design */}
-        <div className="bg-[#192642] p-6 rounded-xl mb-10">
-          <label className="block text-md font-medium mb-3 text-white">
+        <div className={`p-6 rounded-xl mb-10 ${appTheme === "dark" ? "bg-[#192642]" : "bg-white border border-gray-200"}`}>
+          <label className={`block text-md font-medium mb-3 ${appTheme === "dark" ? "text-white" : "text-gray-900"}`}>
             Shopify Store URL
           </label>
           <div className="flex gap-4">

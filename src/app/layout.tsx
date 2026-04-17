@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} min-h-screen bg-white dark:bg-[#0F1729] transition-colors`}>
+      <body className={`${inter.className} min-h-screen transition-colors`} style={{ backgroundColor: "var(--background)" }}>
         <ThemeProvider>
           <Header />
           <main>

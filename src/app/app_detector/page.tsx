@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useTheme } from "@/components/ThemeProvider";
 
 
 interface App {
@@ -20,6 +21,7 @@ interface Particle {
 
 // First store the url,status,apps.any error 
 export default function AppDetector() {
+  const { theme: appTheme } = useTheme();
   const [storeUrl, setStoreUrl] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [apps, setApps] = useState<App[]>([]);
@@ -118,7 +120,7 @@ export default function AppDetector() {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-[#0F1729]">
+    <div className={`min-h-screen relative overflow-hidden ${appTheme === "dark" ? "bg-[#0F1729]" : "bg-gray-50"}`}>
       {/* Particles Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {particles.map((particle) => (

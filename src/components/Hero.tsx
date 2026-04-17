@@ -7,7 +7,7 @@ import { useTheme } from "./ThemeProvider";
 export default function Hero() {
   const { theme } = useTheme();
   return (
-    <section className={`relative min-h-screen overflow-hidden ${theme === "dark" ? "bg-[#0F1729]" : "bg-gradient-to-b from-gray-50 to-white"}`}>
+    <section className={`relative overflow-hidden ${theme === "dark" ? "bg-[#0F1729]" : "bg-gradient-to-b from-gray-50 to-white"}`} style={{ minHeight: "100vh", paddingBottom: "3rem" }}>
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="blob-1 animate-blob "></div>
@@ -32,7 +32,7 @@ export default function Hero() {
               #1 Shopify Scraping Tool
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
+            <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
               Increase your productivity with 
               <span className="text-[#017F83]"> Shopify Scraper</span>
             </h1>
@@ -43,8 +43,9 @@ export default function Hero() {
             </p>
 
             <p className={`text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0 ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
-              <strong className="text-[#017F83]">Shopify Scraper</strong> is a powerful shopify product <strong className="text-gray-900 dark:text-white">exporting tool</strong>.
-              Export products from any Shopify store in CSV format with blistering ease and speed.
+              <strong className="text-[#017F83]">Shopify Scraper</strong> 
+              <span className={`${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}> is a powerful shopify product exporting tool </span>
+              <span className={`${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>Export products from any Shopify store in CSV format with blistering ease and speed.</span>
             </p>
 
             {/* Try It Now Button */}
@@ -88,31 +89,31 @@ export default function Hero() {
               <div className="absolute inset-0 bg-linear-to-br from-primary/30 to-secondary/30 blur-3xl"></div>
 
               {/* Main Illustration */}
-              <div className="relative flex items-center justify-center gap-4">
+              <div className="flex items-center justify-center gap-4">
                 {/* Shopify Store Card */}
-                <div className="glass-card p-5 rounded-2xl w-44 animate-float">
+                <div className={`glass-card p-5 rounded-2xl w-44 animate-float ${theme === "light" ? "bg-white" : "bg-gray-800"}`} style={{ background: theme === "light" ? "#ffffff" : undefined }}>
                   <div className="w-14 h-14 bg-[#95BF47] rounded-xl flex items-center justify-center mx-auto mb-3">
                     <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M15.337 3.416a.589.589 0 0 0-.541-.493c-.236-.02-4.86-.368-4.86-.368s-3.22-3.183-3.575-3.539a.741.741 0 0 0-.632-.201l-1.37.384C3.883 2.29 3.396 5.222 3.396 5.222L.639 6.51s-.481.141-.551.44c-.07.299 1.456 10.313 1.456 10.313l11.072 2.062L20.18 17.9c-.014-.112-4.637-14.358-4.843-14.484zM11.035 7.51l-1.563.473s-.599-1.295-1.643-1.295c-1.343 0-1.394 1.08-1.394 1.267 0 1.393 3.588 1.927 3.588 5.183 0 2.563-1.601 4.212-3.762 4.212-2.593 0-3.914-1.637-3.914-1.637l.694-2.326s1.361 1.193 2.509 1.193c.75 0 1.053-.6 1.053-1.037 0-1.812-2.944-1.894-2.944-4.878 0-2.508 1.778-4.937 5.367-4.937 1.384 0 2.009.403 2.009.403l-.694 2.326v.053h.694z" />
                     </svg>
                   </div>
                   <div className="text-center">
-                    <div className="text-sm font-bold text-gray-900 dark:text-white mb-1">Shopify Store</div>
+                    <div className={`text-sm font-bold mb-1 ${theme === "light" ? "text-gray-900" : "text-white"}`}>Shopify Store</div>
                     <div className="text-xs text-gray-500 dark:text-gray-400">1,234 products</div>
                   </div>
                   {/* Mini product list */}
                   <div className="mt-3 space-y-1.5">
                     <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded"></div>
-                      <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                      <div className="w-6 h-6 rounded" style={{ background: theme === "light" ? "#d1d5db" : "#374151" }}></div>
+                      <div className="flex-1 h-2 rounded" style={{ background: theme === "light" ? "#d1d5db" : "#374151" }}></div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded"></div>
-                      <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                      <div className="w-6 h-6 rounded" style={{ background: theme === "light" ? "#d1d5db" : "#374151" }}></div>
+                      <div className="flex-1 h-2 rounded" style={{ background: theme === "light" ? "#d1d5db" : "#374151" }}></div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded"></div>
-                      <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                      <div className="w-6 h-6 rounded" style={{ background: theme === "light" ? "#d1d5db" : "#374151" }}></div>
+                      <div className="flex-1 h-2 rounded" style={{ background: theme === "light" ? "#d1d5db" : "#374151" }}></div>
                     </div>
                   </div>
                 </div>
@@ -131,8 +132,8 @@ export default function Hero() {
                 </div>
 
                 {/* CSV Export Card */}
-                <div className="glass-card p-5 rounded-2xl w-44 animate-float animation-delay-2000">
-                  <div className="w-14 h-14 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <div className={`glass-card p-5 rounded-2xl w-44 ${theme === "light" ? "bg-white" : "bg-gray-800"}`} style={{ background: theme === "light" ? "#ffffff" : undefined}}>
+                  <div className="w-14 h-14 bg-linear-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mx-auto mb-3">
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
@@ -142,7 +143,7 @@ export default function Hero() {
                     <div className="text-xs text-gray-500 dark:text-gray-400">Ready to import</div>
                   </div>
                   {/* CSV preview */}
-                  <div className="mt-3 bg-gray-100 dark:bg-gray-800 rounded-lg p-2 text-[10px] font-mono text-gray-600 dark:text-gray-300">
+                  <div className="mt-3 rounded-lg p-2 text-[10px] font-mono" style={{ background: theme === "light" ? "#f3f4f6" : "#1f2937", color: theme === "light" ? "#4b5563" : "#d1d5db" }}>
                     <div>Title,Price,SKU</div>
                     <div className="text-primary">Product 1,$29,...</div>
                     <div className="text-primary">Product 2,$49,...</div>
@@ -151,25 +152,25 @@ export default function Hero() {
               </div>
 
               {/* Floating Stats */}
-              <div className="absolute -top-4 -right-4 px-4 py-2 bg-white dark:bg-gray-800 rounded-xl shadow-lg animate-float">
+              <div className={`absolute -top-4 -right-4 px-4 py-2 rounded-xl shadow-lg animate-float ${theme === "light" ? "bg-white" : "bg-gray-800"}`}>
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
                     <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">Export Complete!</span>
+                  <span className={`text-sm font-medium ${theme === "light" ? "text-gray-900" : "text-white"}`}>Export Complete!</span>
                 </div>
               </div>
 
-              <div className="absolute -bottom-4 -left-4 px-4 py-2 bg-white dark:bg-gray-800 rounded-xl shadow-lg animate-float animation-delay-4000">
+              <div className={`absolute -bottom-4 -left-4 px-4 py-2 rounded-xl shadow-lg animate-float animation-delay-4000 ${theme === "light" ? "bg-white" : "bg-gray-800"}`}>
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">&lt; 1 minute</span>
+                  <span className={`text-sm font-medium ${theme === "light" ? "text-gray-900" : "text-white"}`}>&lt; 1 minute</span>
                 </div>
               </div>
             
