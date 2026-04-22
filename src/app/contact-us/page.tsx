@@ -22,25 +22,25 @@ export default function ContactUs() {
   return (
     <div className={`min-h-screen relative overflow-hidden ${theme === "dark" ? "bg-[#0F1729]" : "bg-white"}`}>
 
-      <div className="relative max-w-6xl mx-auto px-6 py-20">
-        <div className="text-center mb-10 ">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-20">
+        <div className="text-center mb-8 lg:mb-10 ">
           <span className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-[#018589]/20 to-[#01d4db]/20 border border-[#018589]/30 rounded-full text-[#01d4db] text-sm font-medium backdrop-blur-sm">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
             </svg>
             Get in Touch
           </span>
-          <h1 className={`text-5xl md:text-6xl font-bold mt-8 mb-6 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+          <h1 className={`text-3xl md:text-4xl lg:text-5xl font-bold mt-6 lg:mt-8 mb-4 lg:mb-6 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
             Contact <span className="text-[#01d4db]">Us</span>
           </h1>
-          <p className={`text-lg max-w-2xl mx-auto ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
+          <p className={`text-base lg:text-lg max-w-2xl mx-auto ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
             Have a question or want further information? Fill in the short form and we will get back to you as soon as possible.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          <div className={`glass-card-animated p-8 rounded-2xl ${theme === "dark" ? "bg-[#162035]" : "bg-gray-50 border border-gray-200"}`}>
-            <h2 className={`text-2xl font-bold mb-9 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Send us a Message</h2>
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+          <div className={`glass-card-animated p-6 lg:p-8 rounded-2xl ${theme === "dark" ? "bg-[#162035]" : "bg-gray-50 border border-gray-200"}`}>
+            <h2 className={`text-xl lg:text-2xl font-bold mb-6 lg:mb-9 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Send us a Message</h2>
             
             {/* When status success & message send */}
             {status === "success" ? (

@@ -53,14 +53,14 @@ export default function Register() {
 
       <div className="relative z-10 max-w-lg mx-auto px-6 py-20">
         <div className="text-center mb-10">
-          <span className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-[#018589]/20 to-[#01d4db]/20 border border-[#018589]/30 rounded-full text-[#01d4db] text-sm font-medium backdrop-blur-sm">
+          <span className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-[#01888C]/20 to-[#01888C]/20 border border-[#01888C]/30 rounded-full text-[#01888C] text-sm font-medium backdrop-blur-sm">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
             </svg>
             Get Started
           </span>
           <h1 className={`text-4xl md:text-5xl font-bold mt-8 mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-            Create <span className="text-[#01d4db]">Account</span>
+            Create <span className="text-[#01888C]">Account</span>
           </h1>
           <p className={theme === "dark" ? "text-gray-400" : "text-gray-600"}>
             Sign up to start scraping Shopify stores
@@ -83,63 +83,62 @@ export default function Register() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
+              
                 <label className={`block text-sm font-medium -ml-[20%] mb-3 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Full Name *</label>
                 <input
                   type="text"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className={`w-[150%] -ml-[20%] px-4 py-3 rounded-xl border transition-all focus:ring-2 ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-300 text-gray-900 placeholder-gray-400"}`}
+                  className={`w-[150%] -ml-[20%] px-4 py-3 rounded-xl border ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-400 text-gray-900 placeholder-gray-400"}`}
                   placeholder="John Doe"
                 />
-              </div>
+              
 
-              <div>
+              
                 <label className={`block text-sm -ml-[20%] font-medium mb-2 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Email *</label>
                 <input
                   type="email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className={`w-[150%] -ml-[20%] px-4 py-3 rounded-xl border transition-all focus:ring-2 ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-300 text-gray-900 placeholder-gray-400"}`}
+                  className={`w-[150%] -ml-[20%] px-4 py-3 rounded-xl border ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-400 text-gray-900 placeholder-gray-400"}`}
                   placeholder="your@email.com"
                 />
-              </div>
               
-              <div>
+              
+              
                 <label className={`block text-sm -ml-[20%] font-medium mb-2 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Password *</label>
                 <input
                   type="password"
                   required
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className={`w-[150%] -ml-[20%] px-4 py-3 rounded-xl border transition-all focus:ring-2 ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-300 text-gray-900 placeholder-gray-400"}`}
+                  className={`w-[150%] -ml-[20%] px-4 py-3 rounded-xl border ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-400 text-gray-900 placeholder-gray-400"}`}
                   placeholder="At least 6 characters"
                 />
-              </div>
+              
 
-              <div>
+              
                 <label className={`block text-sm -ml-[20%] font-medium mb-2 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Confirm Password *</label>
                 <input
                   type="password"
                   required
                   value={formData.confirmPassword}
                   onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                  className={`w-[150%] -ml-[20%] px-4 py-3 rounded-xl border transition-all focus:ring-2 ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-300 text-gray-900 placeholder-gray-400"}`}
+                  className={`w-[150%] -ml-[20%] px-4 py-3 rounded-xl border ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-400 text-gray-900 placeholder-gray-400"}`}
                   placeholder="Confirm your password"
                 />
-              </div>
 
               <div className="flex items-start ">
                 <input type="checkbox" required className="w-4 h-4 mt-1 rounded border-gray-600 bg-[#0a1628] text-[#01d4db] focus:ring-[#01d4db]" />
                 <span className="ml-2 text-sm text-gray-400">
                   I agree to the{" "}
-                  <Link href="/terms-of-service" className="text-[#01d4db] hover:underline">
+                  <Link href="/terms-of-service" className="text-[#01888C] hover:underline">
                     Terms of Service
                   </Link>{" "}
                   and{" "}
-                  <Link href="/privacy-policy" className="text-[#01d4db] hover:underline">
+                  <Link href="/privacy-policy" className="text-[#01888C] hover:underline">
                     Privacy Policy
                   </Link>
                 </span>
@@ -179,7 +178,7 @@ export default function Register() {
 
         <p className="text-center text-gray-400 mt-8">
           Already have an account?{" "}
-          <Link href="/login" className="text-[#01d4db] hover:underline font-medium">
+          <Link href="/login" className="text-[#01888C] hover:underline font-medium">
             Sign in
           </Link>
         </p>

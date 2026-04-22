@@ -8,9 +8,9 @@ export default function Footer() {
   
   return (
     <footer className={`border-t ${theme === "dark" ? "bg-[#0F1729] border-[#2d3f5f]" : "bg-gray-50 border-gray-200"}`}>
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-5 gap-8">
-          <div className="md:col-span-2">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 lg:gap-8">
+          <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
               <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${theme === "dark" ? "bg-[#0F1729]" : "bg-[#017F83]"}`}>
                 <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -22,18 +22,6 @@ export default function Footer() {
             <p className={`mb-4 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
               Shopify Scraper the best shopify product exporting tool on <br></br> the global market
             </p>
-            <div className="flex gap-4">
-              <a
-                // href="https://www.facebook.com/Shopify-Scraper-104051238359810"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`hover:text-[#018589] ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`}
-              >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-              </a>
-            </div>
           </div>
 
           <div>
@@ -102,8 +90,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className={`mt-12 pt-8 border-t ${theme === "dark" ? "border-[#2d3f5f]" : "border-gray-200"}`}>
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className={`mt-10 lg:mt-12 pt-6 lg:pt-8 border-t ${theme === "dark" ? "border-[#2d3f5f]" : "border-gray-200"}`}>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center lg:text-left">
             <p className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`}>
               &copy; 2026 Shopify Scraper. All rights reserved.
             </p>

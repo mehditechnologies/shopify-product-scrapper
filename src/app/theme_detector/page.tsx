@@ -54,34 +54,34 @@ export default function ThemeDetector() {
   };
 
   return (
-    <div className={`min-h-screen p-20 ${appTheme === "dark" ? "bg-[#0F1729]" : "bg-gray-50"}`}>
+    <div className={`min-h-screen py-12 px-4 sm:px-6 lg:p-20 ${appTheme === "dark" ? "bg-[#0F1729]" : "bg-gray-50"}`}>
       <div className="max-w-3xl mx-auto">
         {/* Header - Keep Your Original Design */}
-        <span className={`p-3 m-80 text-lg rounded-full ${appTheme === "dark" ? "bg-[#0C313F] text-[#298db2]" : "bg-[#018589] text-white"}`}>Free Tool</span>
-        <h1 className={`text-4xl pt-10 font-bold text-center mb-5 ${appTheme === "dark" ? "text-white" : "text-gray-900"}`}>
+        <span className={`inline-block px-4 py-2 text-sm rounded-full ${appTheme === "dark" ? "bg-[#0C313F] text-[#298db2]" : "bg-[#018589] text-white"}`}>Free Tool</span>
+        <h1 className={`text-2xl sm:text-3xl lg:text-4xl pt-6 lg:pt-10 font-bold text-center mb-4 lg:mb-5 ${appTheme === "dark" ? "text-white" : "text-gray-900"}`}>
           Shopify<span className="text-[#298db2]"> Theme Detector</span>
         </h1>
-        <p className={`text-lg font-medium text-center mb-8 ${appTheme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
+        <p className={`text-base lg:text-lg font-medium text-center mb-6 lg:mb-8 ${appTheme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
           Identify the Shopify theme by inspecting any Shopify store. Simply type in the domain of a Shopify store.
         </p>
 
         {/* Input Form - Keep Your Original Design */}
-        <div className={`p-6 rounded-xl mb-10 ${appTheme === "dark" ? "bg-[#192642]" : "bg-white border border-gray-200"}`}>
-          <label className={`block text-md font-medium mb-3 ${appTheme === "dark" ? "text-white" : "text-gray-900"}`}>
+        <div className={`p-5 lg:p-6 rounded-xl mb-8 lg:mb-10 ${appTheme === "dark" ? "bg-[#192642]" : "bg-white border border-gray-200"}`}>
+          <label className={`block text-base lg:text-md font-medium mb-3 ${appTheme === "dark" ? "text-white" : "text-gray-900"}`}>
             Shopify Store URL
           </label>
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <input
               type="url"
               value={storeUrl}
               onChange={(e) => setStoreUrl(e.target.value)}
               placeholder="Enter Shopify store URL e.g https://example.myshopify.com"
-              className="flex-1 px-4 py-3 bg-[#0F1729] border-3 border-[#017075] rounded-full focus:outline-none text-white placeholder-gray-500"
+              className="flex-1 px-4 py-3 bg-[#0F1729] border-2 lg:border-3 border-[#017075] rounded-lg sm:rounded-full focus:outline-none text-white placeholder-gray-500"
             />
             <button
               onClick={handleDetect}
               disabled={status === "loading"}
-              className="px-6 py-3 bg-[#e4ecec] text-[#017075] rounded-lg font-medium disabled:opacity-50 hover:bg-white transition-colors"
+              className="px-5 lg:px-6 py-3 bg-[#e4ecec] text-[#017075] rounded-lg font-medium disabled:opacity-50 hover:bg-white transition-colors"
             >
               {status === "loading" ? "Detecting..." : "Detect Theme"}
             </button>

@@ -31,18 +31,18 @@ export default function Newsletter() {
             Thanks for subscribing! Check your email for confirmation.
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 justify-center max-w-xl mx-auto">
+          <form onSubmit={handleSubmit} className="flex sm:flex-row gap-4 justify-center max-w-xl mx-auto">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
-              className="flex-1 px-6 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+              className="flex-1 px-6 py-3 border-2 rounded-lg text-white-900 focus:outline-none focus:ring-2 focus:ring-white"
             />
             <button
               type="submit"
-              className="px-8 py-3 bg-[#0F1729] hover:bg-[#1a2744] text-white font-semibold rounded-lg transition-colors"
+              className="px-12 py-3 bg-[#0F1729] hover:bg-[#1a2744] text-white font-semibold rounded-lg transition-colors"
             >
               Subscribe
             </button>

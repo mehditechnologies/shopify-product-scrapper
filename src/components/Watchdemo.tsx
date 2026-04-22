@@ -7,19 +7,19 @@ export default function Watchdemo() {
   const videoId = "KoHUl0aYG2Q";
 
   return (
-    <section id="Watchdemo" className="relative w-full py-30" style={{ backgroundColor: theme === "dark" ? "#0F1729" : "#ffffff" }}>
-      <div className="container mx-auto px-4 py-16 grid lg:grid-cols-2 gap-12 items-center">
+    <section id="Watchdemo" className="relative w-full py-12 lg:py-24" style={{ backgroundColor: theme === "dark" ? "#0F1729" : "#ffffff" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
         {/* Left: Content */}
         <div>
-          <span className="inline-block px-7 py-3 font-medium rounded-full mb-7 text-white" style={{ backgroundColor: theme === "dark" ? "#0C3B47" : "#018589" }}>
+          <span className="inline-block px-5 lg:px-7 py-2 lg:py-3 font-medium rounded-full mb-5 lg:mb-7 text-white" style={{ backgroundColor: theme === "dark" ? "#0C3B47" : "#018589" }}>
             Watch Demo
           </span>
-          <h1 className="text-4xl font-bold mb-5" style={{ color: theme === "dark" ? "#fff" : "#111827" }}>
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 lg:5" style={{ color: theme === "dark" ? "#fff" : "#111827" }}>
             Gathering data from <span className="text-[#018589]">popular products</span> 
             <span style={{ display: "block", color: theme === "dark" ? "#fff" : "#111827" }}> selling online is not easy</span>
           </h1>
-          <p className="text-lg mb-5" style={{ color: theme === "dark" ? "#d1d5db" : "#4b5563" }}>You can spend days and even weeks searching for the right products, the right descriptions and images.</p>
-          <p className="text-lg" style={{ color: theme === "dark" ? "#d1d5db" : "#4b5563" }}>Then, you need to worry about importing the products into your store and testing it. You are looking at many extra weeks and hard work.</p>
+          <p className="text-base lg:text-lg mb-4 lg:mb-5" style={{ color: theme === "dark" ? "#d1d5db" : "#4b5563" }}>You can spend days and even weeks searching for the right products, the right descriptions and images.</p>
+          <p className="text-base lg:text-lg" style={{ color: theme === "dark" ? "#d1d5db" : "#4b5563" }}>Then, you need to worry about importing the products into your store and testing it. You are looking at many extra weeks and hard work.</p>
         </div>
 
         {/* Right: Video */}

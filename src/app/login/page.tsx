@@ -17,7 +17,7 @@ export default function SignIn() {
   }
 
   return (
-    <div className={`min-h-screen relative overflow-hidden ${theme === "dark" ? "bg-[#0F1729]" : "bg-white"}`}>
+    <div className={`min-h-screen relative overflow-hidden py-12 px-4 sm:px-6 ${theme === "dark" ? "bg-[#0F1729]" : "bg-white"}`}>
       <div className="absolute inset-0 ">
         {[...Array(20)].map((_, i) => (
           <div
@@ -50,23 +50,23 @@ export default function SignIn() {
         <div className="blob blob-4"></div>
       </div>
 
-      <div className="relative max-w-lg mx-auto px-6 py-20">
-        <div className="text-center mb-10">
-          <span className="inline-flex items-center gap-2 px-5 py-2 bg-linear-to-r from-[#018589]/20 to-[#01d4db]/20 border border-[#018589]/30 rounded-full text-[#01d4db] text-sm font-medium backdrop-blur-sm">
+      <div className="relative max-w-lg mx-auto px-4 sm:px-6 py-12 lg:py-20">
+        <div className="text-center mb-8 lg:mb-10">
+        <span className="inline-flex items-center gap-4 px-4 py-2 bg-linear-to-r from-[#018F93]/20 to-[#01888C]/20 border border-[#01888C]/30 rounded-full text-[#01888C] text-sm font-medium backdrop-blur-sm">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
             </svg>
             Welcome Back
           </span>
-          <h1 className={`text-4xl md:text-5xl font-bold mt-8 mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-            Sign <span className="text-[#01d4db]">In</span>
+          <h1 className={`text-3xl lg:text-4xl md:text-5xl font-bold mt-6 lg:mt-8 mb-3 lg:mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+            Sign <span className="text-[#018F93]">In</span>
           </h1>
           <p className={theme === "dark" ? "text-gray-400" : "text-gray-600"}>
             Sign in to access your dashboard
           </p>
         </div>
 
-        <div className={`glass-card-animated p-8 rounded-2xl ${theme === "dark" ? "bg-[#162035]" : "bg-gray-50 border border-gray-200"}`}>
+        <div className={`glass-card-animated p-6 lg:p-8 rounded-2xl ${theme === "dark" ? "bg-[#162035]" : "bg-gray-50 border border-gray-200"}`}>
           {status === "success" ? (
             <div className="text-center py-8">
               <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -89,7 +89,7 @@ export default function SignIn() {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className={`w-full px-4 py-3 rounded-xl border transition-all focus:ring-2 ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-300 text-gray-900 placeholder-gray-400"}`}
+                  className={`w-full px-4 border-2 py-3 rounded-xl transition-all  ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-400 text-gray-900 placeholder-gray-400"}`}
                   placeholder="your@email.com"
                 />
               </div>
@@ -101,7 +101,7 @@ export default function SignIn() {
                   required
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className={`w-full px-4 py-3 rounded-xl border transition-all focus:ring-2 ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-300 text-gray-900 placeholder-gray-400"}`}
+                  className={`w-full px-4 py-3 rounded-xl border-2 transition-all ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-400 text-gray-900 placeholder-gray-400"}`}
                   placeholder="Enter your password"
                 />
               </div>
@@ -111,7 +111,7 @@ export default function SignIn() {
                   <input type="checkbox" className={`w-4 h-4 rounded ${theme === "dark" ? "border-gray-600 bg-[#0a1628]" : "border-gray-300 bg-white"}`} />
                   <span className={`ml-2 text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>Remember me</span>
                 </label>
-                <Link href="/forgot-password" className="text-sm text-[#01d4db] hover:underline">
+                <Link href="/forgot-password" className="text-sm text-[#018F93] hover:underline">
                   Forgot password?
                 </Link>
               </div>
@@ -151,7 +151,7 @@ export default function SignIn() {
 
         <p className="text-center text-gray-400 mt-8">
           Don't have an account?{" "}
-          <Link href="/Register" className="text-[#01d4db] hover:underline font-medium">
+          <Link href="/Register" className="text-[#018F93] hover:underline font-medium">
             Register now
           </Link>
         </p>

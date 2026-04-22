@@ -162,7 +162,7 @@ export default function AppDetector() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 py-16">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-12 lg:py-16">
         {/* Header Badge */}
         <div className="text-center mb-8">
           <span className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-[#018589]/20 to-[#01d4db]/20 border border-[#018589]/30 rounded-full text-[#01d4db] text-sm font-medium backdrop-blur-sm">
@@ -174,20 +174,20 @@ export default function AppDetector() {
         </div>
 
         {/* Main Title */}
-        <h1 className="text-5xl md:text-6xl font-bold text-center mb-6">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 lg:mb-6">
           <span className="bg-linear-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
             Shopify App Detector
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-lg md:text-xl text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+        <p className="text-base lg:text-lg md:text-xl text-center text-gray-400 mb-8 lg:mb-12 max-w-2xl mx-auto">
           Identify the Shopify Apps by inspecting any Shopify store. Simply type in the domain of a Shopify store.
         </p>
 
         {/* Input Section */}
-        <div className="glass-card-animated p-8 rounded-2xl mb-12">
-          <div className="flex flex-col md:flex-row gap-4">
+        <div className="glass-card-animated p-6 lg:p-8 rounded-2xl mb-8 lg:mb-12">
+          <div className="flex flex-col md:flex-row gap-3 lg:gap-4">
             <div className="flex-1 relative">
               <div className="absolute left-5 top-1/2 -translate-y-1/2 text-[#01d4db]">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -206,7 +206,7 @@ export default function AppDetector() {
             <button
               onClick={handleDetect}
               disabled={status === "loading"}
-              className="group px-8 py-4 bg-linear-to-r from-[#018589] to-[#01d4db] text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-[#018589]/30 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50"
+              className="group px-6 lg:px-8 py-3 lg:py-4 bg-linear-to-r from-[#018589] to-[#01d4db] text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-[#018589]/30 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50"
             >
               {status === "loading" ? (
                 <>

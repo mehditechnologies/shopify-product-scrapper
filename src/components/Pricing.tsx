@@ -7,18 +7,18 @@ export default function Pricing() {
   const { theme } = useTheme();
   
   return (
-    <section id="pricing" className="w-full py-20" style={{ backgroundColor: theme === "dark" ? "#1f2937" : "#ffffff" }}>
-      <div className="text-center max-w-7xl mx-auto px-4">
-        <h2 className={`text-5xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+    <section id="pricing" className="w-full py-12 lg:py-20" style={{ backgroundColor: theme === "dark" ? "#1f2937" : "#ffffff" }}>
+      <div className="text-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
             Choose Your<span className="text-[#018589]"> Plan</span>
             
           </h2>
-          <p className={`text-lg mb-20 ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
+          <p className={`text-base lg:text-lg mb-10 lg:mb-20 ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
             Let's choose the package that is best for you and explore it happily and cheerfully.
           </p>
       {/* pricing plans columns */}
 
-        <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-4 max-w-4xl mx-auto">
           <div className="rounded-2xl shadow-lg p-8" style={{ backgroundColor: theme === "dark" ? "#111827" : "#ffffff", border: theme === "light" ? "1px solid #e5e7eb" : "none" }}>
             <h3 className="text-xl font-bold mb-2" style={{ color: theme === "dark" ? "#fff" : "#111827" }}>Free Plan</h3>
             <p className="mb-4" style={{ color: theme === "dark" ? "#9ca3af" : "#6b7280" }}>Perfect to get started</p>
