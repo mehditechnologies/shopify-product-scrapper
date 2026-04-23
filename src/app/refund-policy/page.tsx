@@ -19,28 +19,28 @@ export default function RefundPolicy() {
           <h1 className={`text-3xl md:text-4xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
             Refund <span className="gradient-text">Policy</span>
           </h1>
-          <p className={theme === "dark" ? "text-white" : "text-gray-600"}>
+          <p className={theme === "dark" ? "text-white" : "text-gray-900"}>
             Our commitment to fair and transparent billing practices
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <div className={`glass-card p-8 md:p-12 rounded-2xl`}>
-            <div className="mb-10">
+          <div className={`p-8 md:p-12 rounded-2xl ${theme === "dark" ? "bg-gray-900/50" : "bg-white border border-gray-200"}`}>
+            <div className={`mb-10 ${theme === "dark" ? "" : "bg-white rounded-2xl p-6"}`}>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-linear-to-r  to-emerald-700 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-linear-to-r  bg-emerald-700 rounded-xl flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/>
                   </svg>
                 </div>
                 <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Free Trial: Demo Page</h2>
               </div>
-              <p className={`leading-relaxed ${theme === "dark" ? "text-white" : "text-gray-600"}`}>
+              <p className={`leading-relaxed ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
                 We provide our users with a completely free demo page to facilitate in-depth exploration of the features offered by Shopify Scraper, without any financial commitment. We strongly encourage you to take advantage of this opportunity before making a purchasing decision.
               </p>
             </div>
 
-            <div className="mb-10">
+            <div className={`mb-10 ${theme === "dark" ? "" : "bg-white rounded-2xl p-6"}`}>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-linear-to-r from-[#018589] to-[#015f65] rounded-xl flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,13 +49,13 @@ export default function RefundPolicy() {
                 </div>
                 <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Subscription Cancellation</h2>
               </div>
-              <p className={`leading-relaxed ${theme === "dark" ? "text-white" : "text-gray-600"}`}>
+              <p className={`leading-relaxed ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
                 Our customers enjoy the flexibility to cancel their subscription at any time, whether during the free trial period of the demo page or after purchasing a paid subscription. Cancellation can be easily done from their personal space on our platform, through a few intuitive clicks, or by contacting us via email at{" "}
                 <a href="mailto:shopify.scraper.com@gmail.com" className="text-[#018589] font-semibold hover:underline">shopify.scraper.com@gmail.com</a>.
               </p>
             </div>
 
-            <div className="mb-10">
+            <div className={`mb-10 ${theme === "dark" ? "" : "bg-white rounded-2xl p-6"}`}>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-orange-500 rounded-xl flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -65,7 +65,7 @@ export default function RefundPolicy() {
                 <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>No Refund for Misuse</h2>
               </div>
               <div className={`p-6 border rounded-xl ${theme === "dark" ? "bg-red-900/20 border-red-800" : "bg-red-50 border-red-200"}`}>
-                <p className={`m-0 ${theme === "dark" ? "text-white" : "text-gray-700"}`}>
+                <p className={`m-0 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
                   We emphasize that any refund is subject to our rigorous terms of use. No refund will be granted in case of misuse of the tool, whether for users of the free demo page or those who have subscribed to a paid subscription. This includes any behavior contrary to ethical use or in violation of our terms and conditions.
                 </p>
               </div>
@@ -80,7 +80,7 @@ export default function RefundPolicy() {
                 </div>
                 <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Contact and Technical Support</h2>
               </div>
-              <p className={`mb-4 ${theme === "dark" ? "text-white" : "text-gray-600"}`}>
+              <p className={`mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
                 For any questions regarding our refund policy, to proceed with the cancellation of your subscription, or for any technical issues with the application, please contact our technical support. Our dedicated team is here to assist you.
               </p>
               <Link href="mailto:shopify.scraper.com@gmail.com" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#018589] to-[#015f65] text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-[#018589]/25 transition-all">

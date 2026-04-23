@@ -8,7 +8,7 @@ export default function Watchdemo() {
 
   return (
     <section id="Watchdemo" className="relative w-full py-12 lg:py-24" style={{ backgroundColor: theme === "dark" ? "#0F1729" : "#ffffff" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+      <div className="max-w-7xl mx-auto sm:px-6 lg:px-1 lg:py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
         {/* Left: Content */}
         <div>
           <span className="inline-block px-5 lg:px-7 py-2 lg:py-3 font-medium rounded-full mb-5 lg:mb-7 text-white" style={{ backgroundColor: theme === "dark" ? "#0C3B47" : "#018589" }}>

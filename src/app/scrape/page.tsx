@@ -121,14 +121,16 @@ export default function ScrapePage() {
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme === "dark" ? "#0F1729" : "#ffffff" }}>
       <div className="max-w-3xl mx-auto">
         {/* Page Header */}
-        <span className=" p-3 m-76 px-4 py-2 rounded-full text-white text-sm" style={{ backgroundColor: theme === "dark" ? "#0C313F" : "#018589" }}>Product Scraper</span>
-        <h1 className="text-center text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 mt-6 lg:mt-10" style={{ color: theme === "dark" ? "#fff" : "#111827" }}>Scrape <span className="text-[#018589]">Products</span></h1>
-        <p className="text-center text-base lg:text-lg mb-6 lg:mb-8" style={{ color: theme === "dark" ? "#9ca3af" : "#4b5563" }}>
+        <div className="text-center">
+        <span className="inline-block px-4 py-2 rounded-full text-sm" style={{ backgroundColor: theme === "dark" ? "#0C313F" : "#018589", color: "#fff" }}>Product Scraper</span>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 mt-6 lg:mt-10" style={{ color: theme === "dark" ? "#fff" : "#111827" }}>Scrape <span className="text-[#018589]">Products</span></h1>
+        <p className="text-base lg:text-lg mb-6 lg:mb-8" style={{ color: theme === "dark" ? "#9ca3af" : "#4b5563" }}>
           Enter a Shopify store URL to scrape and export products
         </p>
+        </div>
 
         {/* Input Section */}
-        <div className="p-5 lg:p-7 rounded-2xl lg:rounded-3xl mb-6 lg:mb-8" style={{ backgroundColor: theme === "dark" ? "#162035" : "#ffffff", border: theme === "light" ? "1px solid #e5e7eb" : "none" }}>
+        <div className="p-5 lg:p-7 rounded-2xl lg:rounded-3xl mb-6 lg:mb-8" style={{ backgroundColor: theme === "dark" ? "#162035" : "#f9fafb", border: theme === "dark" ? "none" : "1px solid #e5e7eb" }}>
           <label className="inline-block text-base lg:text-lg font-medium mb-3 lg:mb-4" style={{ color: theme === "dark" ? "#fff" : "#111827" }}>
             Shopify Store URL
           </label>
@@ -138,7 +140,7 @@ export default function ScrapePage() {
               value={shopUrl}
               onChange={(e) => setShopUrl(e.target.value)}
               placeholder="https://example.myshopify.com"
-              className="flex-1 px-4 lg:px-5 py-3 lg:py-4 border-2 rounded-lg focus:outline-4"
+              className="flex-1 lg:px-5 lg:py-4 border-3 rounded-lg "
               style={{ backgroundColor: theme === "dark" ? "#0F1729" : "#ffffff", borderColor: theme === "dark" ? "#018D92" : "#d1d5db", color: theme === "dark" ? "#fff" : "#111827" }}
             />
             <button
@@ -147,7 +149,7 @@ export default function ScrapePage() {
               className="px-5 lg:px-6 py-3 rounded-lg font-medium disabled:opacity-50"
               style={{ backgroundColor: "#018589", color: "#fff" }}
             >
-              {status === "loading" ? "Scraping..." : "Scrape"}
+              {status === "loading" ? "Scraping..." : "Scrape Products"}
             </button>
           </div>
           
@@ -159,7 +161,7 @@ export default function ScrapePage() {
 
         {/* Results Section - Only show after successful scrape */}
         {status === "success" && (
-          <div className="p-4 lg:p-6 rounded-xl" style={{ backgroundColor: theme === "dark" ? "#162035" : "#ffffff" }}>
+          <div className="p-4 lg:p-6 rounded-xl" style={{ backgroundColor: theme === "dark" ? "#162035" : "#f9fafb" }}>
             <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mb-4">
               <h2 className="text-lg lg:text-xl font-semibold" style={{ color: theme === "dark" ? "#fff" : "#111827" }}>
                 Found {products.length} products
@@ -176,8 +178,8 @@ export default function ScrapePage() {
             {/* Products List with images first */}
             <div className="space-y-3">
               {products.map((product: any, idx: number) => (
-                <div key={idx} className="flex items-center p-3 lg:p-4 rounded-xl lg:rounded-full gap-3 lg:gap-4" style={{ backgroundColor: theme === "dark" ? "#0F1729" : "#f3f4f6" }}>
-{product.images?.[0]?.src && (
+                <div key={idx} className="flex items-center p-3 lg:p-4 rounded-xl lg:rounded-full gap-3 lg:gap-4" style={{ backgroundColor: theme === "dark" ? "#0F1729" : "#ffffff" }}>
+                  {product.images?.[0]?.src && (
                       <img 
                         src={product.images[0].src} 
                         alt={product.title}

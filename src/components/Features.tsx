@@ -52,8 +52,8 @@ export default function Features() {
   
   return (
     <section id="features" className="w-full py-12 lg:py-20" style={{ backgroundColor: theme === "light" ? "#fff" : "#111827" }}>
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> 
-      <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-1"> 
+      <div className="grid lg:grid-cols-2 lg:gap-20 items-center">
           
       {/* Left: Visual - Feature Cards Grid */}
           <div className="relative">

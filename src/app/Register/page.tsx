@@ -83,52 +83,44 @@ export default function Register() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
-              
-                <label className={`block text-sm font-medium -ml-[20%] mb-3 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Full Name *</label>
+              <div>
+                <label className={`block text-sm font-medium mb-2 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Full Name *</label>
                 <input
                   type="text"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className={`w-[150%] -ml-[20%] px-4 py-3 rounded-xl border ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-400 text-gray-900 placeholder-gray-400"}`}
+                  className={`w-full px-4 py-3 rounded-xl border ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-400 text-gray-900 placeholder-gray-400"}`}
                   placeholder="John Doe"
                 />
-              
-
-              
-                <label className={`block text-sm -ml-[20%] font-medium mb-2 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Email *</label>
+                <label className={`block text-sm font-medium mb-2 mt-4 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Email *</label>
                 <input
                   type="email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className={`w-[150%] -ml-[20%] px-4 py-3 rounded-xl border ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-400 text-gray-900 placeholder-gray-400"}`}
+                  className={`w-full px-4 py-3 rounded-xl border ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-400 text-gray-900 placeholder-gray-400"}`}
                   placeholder="your@email.com"
                 />
-              
-              
-              
-                <label className={`block text-sm -ml-[20%] font-medium mb-2 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Password *</label>
+                <label className={`block text-sm font-medium mb-2 mt-4 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Password *</label>
                 <input
                   type="password"
                   required
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className={`w-[150%] -ml-[20%] px-4 py-3 rounded-xl border ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-400 text-gray-900 placeholder-gray-400"}`}
+                  className={`w-full px-4 py-3 rounded-xl border ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-400 text-gray-900 placeholder-gray-400"}`}
                   placeholder="At least 6 characters"
                 />
-              
-
-              
-                <label className={`block text-sm -ml-[20%] font-medium mb-2 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Confirm Password *</label>
+                <label className={`block text-sm font-medium mb-2 mt-4 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Confirm Password *</label>
                 <input
                   type="password"
                   required
                   value={formData.confirmPassword}
                   onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                  className={`w-[150%] -ml-[20%] px-4 py-3 rounded-xl border ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-400 text-gray-900 placeholder-gray-400"}`}
+                  className={`w-full px-4 py-3 rounded-xl border ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-400 text-gray-900 placeholder-gray-400"}`}
                   placeholder="Confirm your password"
                 />
+              </div>
 
               <div className="flex items-start ">
                 <input type="checkbox" required className="w-4 h-4 mt-1 rounded border-gray-600 bg-[#0a1628] text-[#01d4db] focus:ring-[#01d4db]" />

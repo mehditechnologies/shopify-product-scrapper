@@ -10,10 +10,10 @@ export default function Header() {
 
   return (
     
-    <header className={`sticky top-0 z-50 border-b ${theme === "dark" ? "bg-[#0F1729]/95 border-[#2d3f5f]" : "bg-white/95 border-gray-200"} backdrop-blur-sm`}>
+    <header className={`sticky top-0 z-50 border-b  ${theme === "dark" ? "bg-[#0F1729]/95 border-[#2d3f5f]" : "bg-white/95 border-gray-200"} backdrop-blur-sm`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-
+        <div className="flex justify-between items-center h-18">
+          
           {/* Logo section */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2">

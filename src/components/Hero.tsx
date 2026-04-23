@@ -7,7 +7,7 @@ import { useTheme } from "./ThemeProvider";
 export default function Hero() {
   const { theme } = useTheme();
   return (
-    <section className={`relative overflow-hidden ${theme === "dark" ? "bg-[#0F1729]" : "bg-gradient-to-b from-gray-50 to-white"}`} style={{ minHeight: "calc(100vh - 4rem)", padding: "3rem 0" }}>
+    <section className={`relative overflow-hidden mt-10 ${theme === "dark" ? "bg-[#0F1729]" : "bg-gradient-to-b from-gray-50 to-white"}`} style={{ minHeight: "calc(100vh - 4rem)", padding: "3rem 0" }}>
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="blob-1 animate-blob "></div>
@@ -19,12 +19,12 @@ export default function Hero() {
         <div className="particle particle-4"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto sm:px-6 lg:px-1">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           
           {/* Left: Content */}
-          <div className="animate-slide-in-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 dark:bg-/20 border border-primary/30 rounded-full text-primary font-medium mb-6">
+          <div className="animate-slide-in-left text-center lg:text-left">
+            <div className="inline-flex items-center justify-center gap-2 px-4 py-2 dark:bg-/20 border border-primary/30 rounded-full text-primary font-medium mb-6">
               <span className="relative flex h-3 w-3">
                 <span className=" absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative text-[#b14c15] inline-flex rounded-full h-3 w-3"></span>
@@ -32,22 +32,22 @@ export default function Hero() {
               #1 Shopify Scraping Tool
             </div>
 
-            <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 lg:mb-6 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+            <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 lg:mb-6 text-center lg:text-left ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
               Increase your productivity with 
               <span className="text-[#017F83]"> Shopify Scraper</span>
             </h1>
 
-            <p className={`text-base lg:text-lg mb-4 lg:mb-6 max-w-xl ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
+            <p className={`text-base lg:text-lg mb-4 lg:mb-6 max-w-xl text-center lg:text-left ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
               Did you know that most Shopify sellers with <span className="text-[#017F83] font-semibold">millions of sales </span>
               can create online stores of <span className="text-[#017F83] font-semibold">1000+ products</span> in under <span className="text-[#017F83] font-semibold">one minute</span>?
             </p>
 
-            <p className={`text-sm lg:text-base mb-6 lg:mb-8 max-w-xl ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
+            <p className={`text-sm lg:text-base mb-6 lg:mb-8 max-w-xl text-center lg:text-left ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
               <strong className="text-[#017F83]">Shopify Scraper</strong> is a powerful shopify product exporting tool. Export products from any Shopify store in CSV format with blistering ease and speed.
             </p>
 
             {/* Try It Now Button */}
-            <div className="flex justify-center lg:justify-start mb-4">
+            <div className="flex justify-center lg:justify-start mb-4 text-center">
               <Link href="/scrape" className="btn-gradient px-6 lg:px-8 py-3 lg:py-4 rounded-xl text-base lg:text-lg">
                 <span className="flex items-center gap-2">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -59,20 +59,20 @@ export default function Hero() {
             </div>
 
             {/* Chrome Extension + Watch Video */}
-            <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 items-center justify-center lg:justify-start">
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
               <a
                 href="https://chrome.google.com/webstore/detail/shopify-scraper/idjimkpnmipnenkoifdomonlcejhhjnn"
                 target="_blank"
-                className="inline-flex items-center justify-center gap-2 px-4 lg:px-6 py-2 lg:py-3 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white font-semibold rounded-xl hover:border-primary hover:text-primary transition-all text-sm lg:text-base"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white font-semibold rounded-xl hover:border-primary hover:text-primary transition-all text-sm"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-3.953 6.848c.062.003.124.007.186.007A12 12 0 0 0 22.931 6.636z" />
                 </svg>
                 Chrome Extension
               </a>
-              <button type="button" className="flex items-center gap-2 lg:gap-3 text-gray-600 dark:text-gray-300 hover:text-secondary dark:hover:text-secondary transition-colors group text-sm lg:text-base">
-                <span className="w-8 lg:w-10 h-8 lg:h-10 bg-linear-to-br from-primary to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 transition-transform">
-                  <svg className="w-3 lg:w-4 h-3 lg:h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <button type="button" className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-secondary dark:hover:text-secondary transition-colors group text-sm">
+                <span className="w-8 h-8 bg-linear-to-br from-primary to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 transition-transform">
+                  <svg className="w-3 h-3 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </span>

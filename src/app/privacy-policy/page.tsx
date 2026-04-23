@@ -19,28 +19,28 @@ export default function SecurityPolicy() {
           <h1 className={`text-3xl md:text-4xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
             Security <span className="gradient-text">Policy</span>
           </h1>
-          <p className={theme === "dark" ? "text-white" : "text-gray-600"}>
+          <p className={theme === "dark" ? "text-white" : "text-gray-900"}>
             Your security is our top priority
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <div className={`glass-card p-8 md:p-12 rounded-2xl`}>
-            <div className="mb-10">
+          <div className={`p-8 md:p-12 rounded-2xl ${theme === "dark" ? "bg-gray-900/50" : "bg-white border border-gray-200"}`}>
+            <div className={`mb-10 ${theme === "dark" ? "" : "bg-white rounded-2xl p-6"}`}>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-14 h-14 bg-gradient-to-r to-emerald-700 rounded-2xl flex items-center justify-center">
+                <div className="w-14 h-14 bg-gradient-to-r bg-emerald-700 rounded-2xl flex items-center justify-center">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
                   </svg>
                 </div>
                 <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Data Encryption</h2>
               </div>
-              <p className={`leading-relaxed ${theme === "dark" ? "text-white" : "text-gray-600"}`}>
+              <p className={`leading-relaxed ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
                 All communication between you and our servers are encrypted using HTTPS. We use HSTS to allow your browser to know in advance that it should only communicate with us using HTTPS. Our backups of your data are always encrypted. To improve their durability they&apos;re stored in a separate geographical zone.
               </p>
             </div>
 
-            <div className="mb-10">
+            <div className={`mb-10 ${theme === "dark" ? "" : "bg-white rounded-2xl p-6"}`}>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-14 h-14 bg-gradient-to-r from-[#018589] to-[#016a70] rounded-2xl flex items-center justify-center">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,35 +49,35 @@ export default function SecurityPolicy() {
                 </div>
                 <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Physical Security</h2>
               </div>
-              <p className={`leading-relaxed ${theme === "dark" ? "text-white" : "text-gray-600"}`}>
+              <p className={`leading-relaxed ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
                 We carefully select our hosting providers. We make sure our infrastructure has full redundancy for every major system, including the power supply and internet connection. The data centers we use have surveillance teams on site 24/7, barbed-wire fencing and strict security procedures.
               </p>
             </div>
 
-            <div className="mb-10">
+            <div className={`mb-10 ${theme === "dark" ? "" : "bg-white rounded-2xl p-6"}`}>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-14 h-14 bg-gradient-to-r  to-cyan-700 rounded-2xl flex items-center justify-center">
+                <div className="w-14 h-14 bg-gradient-to-r  bg-cyan-700 rounded-2xl flex items-center justify-center">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
                   </svg>
                 </div>
                 <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Infrastructure</h2>
               </div>
-              <p className={`leading-relaxed ${theme === "dark" ? "text-white" : "text-gray-600"}`}>
+              <p className={`leading-relaxed ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
                 We&apos;re continuously updating our infrastructure to stay on top of new vulnerabilities. All of our servers are monitored closely and logs are stored indefinitely.
               </p>
             </div>
 
-            <div className="mb-10">
+            <div className={`mb-10 ${theme === "dark" ? "" : "bg-white rounded-2xl p-6"}`}>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-14 h-14 bg-gradient-to-r  to-pink-700 rounded-2xl flex items-center justify-center">
+                <div className="w-14 h-14 bg-gradient-to-r  bg-pink-700 rounded-2xl flex items-center justify-center">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
                   </svg>
                 </div>
                 <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Billing Information</h2>
               </div>
-              <p className={`leading-relaxed ${theme === "dark" ? "text-white" : "text-gray-600"}`}>
+              <p className={`leading-relaxed ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
                 We never store your billing information on our servers. They are handled by our partner: Stripe.
               </p>
               <div className={`mt-4 p-5 rounded-2xl ${theme === "dark" ? "bg-gray-800" : "bg-gray-100"}`}>
@@ -89,7 +89,7 @@ export default function SecurityPolicy() {
                   </div>
                   <div>
                     <p className={`font-bold text-lg ${theme === "dark" ? "text-white" : "text-gray-900"}`}>PCI Service Provider Level 1 Certified</p>
-                    <p className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>Highest level of security certification</p>
+                    <p className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-900"}`}>Highest level of security certification</p>
                   </div>
                 </div>
               </div>
@@ -104,7 +104,7 @@ export default function SecurityPolicy() {
                 </div>
                 <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Security Bug Bounty Program</h2>
               </div>
-              <p className={`mb-4 ${theme === "dark" ? "text-white" : "text-gray-600"}`}>
+              <p className={`mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
                 We work with security researchers to keep up with the state-of-the-art in web security. If you have discovered a web security flaw that impacts our products, please contact us.
               </p>
               <Link href="mailto:shopify.scraper.com@gmail.com" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#018589] to-[#016a70] text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-[#018589]/25 transition-all">

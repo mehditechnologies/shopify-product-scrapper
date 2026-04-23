@@ -4,13 +4,12 @@ import { useState } from "react"
 import { useTheme } from "@/components/ThemeProvider"
 import Link from "next/link"
 
-export default function SignIn() {
+export default function ForgotPassword() {
   const { theme } = useTheme()
-  const [formData, setFormData] = useState({ email: "", password: "" })
+  const [formData, setFormData] = useState({ email: "" })
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [error, setError] = useState("")
 
-  // right now no db so pass through 
   function handleSubmit(e: React.FormEvent){
     e.preventDefault()
   }
@@ -53,15 +52,15 @@ export default function SignIn() {
         <div className="text-center mb-8 lg:mb-10">
         <span className="inline-flex items-center gap-4 px-4 py-2 bg-linear-to-r from-[#018F93]/20 to-[#01888C]/20 border border-[#01888C]/30 rounded-full text-[#01888C] text-sm font-medium backdrop-blur-sm">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
             </svg>
-            Welcome Back
+            Reset Password
           </span>
           <h1 className={`text-3xl lg:text-4xl md:text-5xl font-bold mt-6 lg:mt-8 mb-3 lg:mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-            Sign <span className="text-[#018F93]">In</span>
+            Forgot <span className="text-[#018F93]">Password</span>
           </h1>
           <p className={theme === "dark" ? "text-gray-400" : "text-gray-600"}>
-            Sign in to access your dashboard
+            Enter your email to reset your password
           </p>
         </div>
 
@@ -70,13 +69,13 @@ export default function SignIn() {
             <div className="text-center py-8">
               <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
               </div>
-              <h3 className={`text-xl font-semibold mb-2 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Welcome back!</h3>
-              <p className={`mb-4 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>Redirecting to dashboard...</p>
-              <Link href="/" className="text-[#01d4db] hover:underline">
-                Go to homepage
+              <h3 className={`text-xl font-semibold mb-2 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Check your email!</h3>
+              <p className={`mb-4 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>We sent you a password reset link.</p>
+              <Link href="/login" className="text-[#01d4db] hover:underline">
+                Back to sign in
               </Link>
             </div>
           ) : (
@@ -91,25 +90,6 @@ export default function SignIn() {
                   className={`w-full px-4 border-2 py-3 rounded-xl transition-all  ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-400 text-gray-900 placeholder-gray-400"}`}
                   placeholder="your@email.com"
                 />
-                <label className={`block text-sm font-medium mb-2 mt-4 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Password *</label>
-                <input
-                  type="password"
-                  required
-                  value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className={`w-full px-4 py-3 rounded-xl border-2 transition-all ${theme === "dark" ? "bg-[#0a1628] border-[#018589]/30 text-white placeholder-gray-500" : "bg-white border-gray-400 text-gray-900 placeholder-gray-400"}`}
-                  placeholder="Enter your password"
-                />
-              </div>
-
-              <div className="flex items-center justify-between">
-                <label className="flex items-center">
-                  <input type="checkbox" className={`w-4 h-4 rounded ${theme === "dark" ? "border-gray-600 bg-[#0a1628]" : "border-gray-300 bg-white"}`} />
-                  <span className={`ml-2 text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>Remember me</span>
-                </label>
-                <Link href="/forgot-password" className="text-sm text-[#018F93] hover:underline">
-                  Forgot password?
-                </Link>
               </div>
 
               {error && (
@@ -129,14 +109,14 @@ export default function SignIn() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
                     </svg>
-                    Signing in...
+                    Sending...
                   </>
                 ) : (
                   <>
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                     </svg>
-                    Sign In
+                    Send Reset Link
                   </>
                 )}
               </button>
@@ -146,9 +126,9 @@ export default function SignIn() {
         </div>
 
         <p className="text-center text-gray-400 mt-8">
-          Don't have an account?{" "}
-          <Link href="/Register" className="text-[#018F93] hover:underline font-medium">
-            Register now
+          Remember your password?{" "}
+          <Link href="/login" className="text-[#018F93] hover:underline font-medium">
+            Sign in
           </Link>
         </p>
       </div>

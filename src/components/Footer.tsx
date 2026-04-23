@@ -8,14 +8,13 @@ export default function Footer() {
   
   return (
     <footer className={`border-t ${theme === "dark" ? "bg-[#0F1729] border-[#2d3f5f]" : "bg-gray-50 border-gray-200"}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-1 py-10 lg:py-12">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-6 lg:gap-8">
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${theme === "dark" ? "bg-[#0F1729]" : "bg-[#017F83]"}`}>
-                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
-                </svg>
+              <div className={`w-8 h-8 flex items-center justify-center ${theme === "dark" ? "bg-[#0F1729]" : ""}`}>
+                <img className="" src="/extension-logo.png"/>
+                
               </div>
               <span className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>ShopifyScraper</span>
             </Link>
