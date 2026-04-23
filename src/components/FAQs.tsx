@@ -98,7 +98,7 @@ export default function FAQs() {
         <div className="mt-12 text-center">
           <p className={theme === "dark" ? "text-gray-300" : "text-gray-600"}>Still have questions?</p>
           <Link
-            href="/contact"
+            href="/contact-us"
             className="inline-block px-8 py-3 bg-[#018589] hover:bg-[#3e229c] text-white font-semibold rounded-lg transition-colors"
           >
             Contact Us
