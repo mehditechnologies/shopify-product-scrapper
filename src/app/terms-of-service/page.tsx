@@ -22,7 +22,7 @@ export default function TermsOfService() {
         </div>
 
         <div className={`p-8 md:p-12 rounded-2xl ${theme === "dark" ? "bg-gray-900/50" : "bg-gray-50 border border-gray-200"}`}>
-          <div className={`mb-8 ${theme === "dark" ? "" : "bg-white rounded-2xl p-6"}`}>
+          <div className="mb-8">
             <p className={`leading-relaxed ${theme === "dark" ? "text-gray-300" : "text-gray-900"}`}>
               These terms and conditions (&quot;Agreement&quot;) set forth the general terms and conditions of your use of the <Link href="/" className="text-[#018589] hover:underline font-medium">shopify-scraper.com</Link> website (&quot;Website&quot; or &quot;Service&quot;) and any of its related products and services (collectively, &quot;Services&quot;). This Agreement is legally binding between you (&quot;User&quot;, &quot;you&quot; or &quot;your&quot;) and this Website operator (&quot;Operator&quot;, &quot;we&quot;, &quot;us&quot; or &quot;our&quot;). By accessing and using the Website and Services, you acknowledge that you have read, understood, and agree to be bound by the terms of this Agreement.
             </p>
@@ -31,7 +31,7 @@ export default function TermsOfService() {
             </p>
           </div>
 
-          <div className={`mb-8 ${theme === "dark" ? "" : "bg-white rounded-2xl p-6"}`}>
+          <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: "linear-gradient(to right, #0e7490, #155e75)" }}>
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -48,7 +48,7 @@ export default function TermsOfService() {
             </p>
           </div>
 
-          <div className={`mb-8 ${theme === "dark" ? "" : "bg-white rounded-2xl p-6"}`}>
+          <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: "linear-gradient(to right, #db2777, #be185c)" }}>
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -65,7 +65,7 @@ export default function TermsOfService() {
             </p>
           </div>
 
-          <div className={`mb-8 ${theme === "dark" ? "" : "bg-white rounded-2xl p-6"}`}>
+          <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: "linear-gradient(to right, #ea580c, #c2410c)" }}>
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,7 +79,7 @@ export default function TermsOfService() {
             </p>
           </div>
 
-          <div className={`mb-8 ${theme === "dark" ? "" : "bg-white rounded-2xl p-6"}`}>
+          <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: "linear-gradient(to right, #059669, #047857)" }}>
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,7 +93,7 @@ export default function TermsOfService() {
             </p>
           </div>
 
-          <div className={`${theme === "dark" ? "" : "bg-white rounded-2xl p-6"}`}>
+          <div>
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: "linear-gradient(to right, #0284c7, #0369a1)" }}>
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

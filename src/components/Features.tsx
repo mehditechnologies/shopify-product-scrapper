@@ -13,7 +13,7 @@ const features = [
     ),
     title: "CSV Export",
     desc: "One-click export to CSV",
-    color: "from-primary to-primary-600",
+    color: "from-primary to-primary",
   },
   {
     icon: (

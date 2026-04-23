@@ -10,7 +10,7 @@ export default function Watchdemo() {
     <section id="Watchdemo" className="relative w-full py-12 lg:py-24" style={{ backgroundColor: theme === "dark" ? "#0F1729" : "#ffffff" }}>
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-1 lg:py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
         {/* Left: Content */}
-        <div>
+        <div className="text-center lg:text-left">
           <span className="inline-block px-5 lg:px-7 py-2 lg:py-3 font-medium rounded-full mb-5 lg:mb-7 text-white" style={{ backgroundColor: theme === "dark" ? "#0C3B47" : "#018589" }}>
             Watch Demo
           </span>
@@ -23,7 +23,7 @@ export default function Watchdemo() {
         </div>
 
         {/* Right: Video */}
-        <div className="relative">
+        <div className="relative text-center lg:text-left">
           <div className="absolute inset-0 rounded-2xl blur-xl" style={{ background: theme === "dark" ? "linear-gradient(to right, rgba(1,133,137,0.2), rgba(52,152,219,0.2))" : "rgba(1,133,137,0.1)" }}></div>
           <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{ border: theme === "dark" ? "1px solid rgba(255,255,255,0.1)" : "1px solid #e5e7eb" }}>
             <iframe

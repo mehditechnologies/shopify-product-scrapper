@@ -7,7 +7,7 @@ import { useTheme } from "./ThemeProvider";
 export default function Hero() {
   const { theme } = useTheme();
   return (
-    <section className={`relative overflow-hidden mt-10 ${theme === "dark" ? "bg-[#0F1729]" : "bg-gradient-to-b from-gray-50 to-white"}`} style={{ minHeight: "calc(100vh - 4rem)", padding: "3rem 0" }}>
+    <section className={`relative overflow-hidden ${theme === "dark" ? "bg-[#0F1729]" : "bg-gradient-to-b from-gray-50 to-white"}`} style={{ minHeight: "calc(100vh - 4rem)", padding: "3rem 0" }}>
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="blob-1 animate-blob "></div>
