@@ -11,36 +11,12 @@ export default function ForgotPassword() {
   const [error, setError] = useState("")
 
   function handleSubmit(e: React.FormEvent){
+    const resetpass =
     e.preventDefault()
   }
 
   return (
     <div className={`min-h-screen relative overflow-hidden py-12 px-4 sm:px-6 ${theme === "dark" ? "bg-[#0F1729]" : "bg-white"}`}>
-      <div className="absolute inset-0 ">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full bg-[#01d4db]"
-            style={{
-              width: `${Math.random() * 4 + 2}px`,
-              height: `${Math.random() * 4 + 2}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.5 + 0.1,
-              animation: `float-particle ${Math.random() * 10 + 10}s linear infinite`,
-              animationDelay: `${Math.random() * 10}s`,
-            }}
-          />
-        ))}
-        <style jsx global>{`
-          @keyframes float-particle {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            90% { opacity: 0.5; }
-            90% { opacity: 0.5; }
-            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
-          }
-        `}</style>
-      </div>
       <div className="animated-bg">
         <div className="blob blob-1"></div>
         <div className="blob blob-2"></div>

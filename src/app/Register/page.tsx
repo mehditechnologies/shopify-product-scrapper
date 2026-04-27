@@ -1,48 +1,80 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useTheme } from "@/components/ThemeProvider"
 import Link from "next/link"
-import { PassThrough } from "stream"
+import { useRouter } from 'next/navigation'
+import { createClient } from '@/utils/supabase/client'
+
 
 export default function Register() {
   const { theme } = useTheme()
+  const router = useRouter()
   const [formData, setFormData] = useState({ name: "", email: "", password: "", confirmPassword: "" })
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [error, setError] = useState("")
-  
-//   didnot use db right now so passthrough
-  function handleSubmit(){
-    PassThrough
+
+  // useeffect for checking if user register
+  useEffect(() => {
+
+    // create supabase client
+    const supabase = createClient()
+    
+    //check if user is already register then redirect to login
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if(user){
+          // if user is already register then redirect to 
+        router.push('/login')
+      }
+  })
+}, [router])
+
+// handle submit function
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    
+    // check if password matches confirm password
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match")
+      setStatus("error")
+      return
+    }
+    
+    setStatus("loading")
+    setError("")
+    
+    try {
+      const supabase = createClient()
+      
+      // sign up with email and password
+      const { data, error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            full_name: formData.name
+          }
+        }
+      })
+      
+      // check if there was an error from supabase
+      if (error) {
+        setError(error.message)
+        setStatus("error")
+      } else {
+        // success - show success message
+        setStatus("success")
+      }
+    } catch (err) {
+      // Handle unexpected errors (network issues, etc.)
+      setError("Something went wrong. Please try again.")
+      setStatus("error")
+    }
   }
 
   return (
-    <div className={`min-h-screen relative overflow-hidden ${theme === "dark" ? "bg-[#0F1729]" : "bg-white"}`}>
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full bg-[#01d4db]"
-            style={{
-              width: `${Math.random() * 4 + 2}px`,
-              height: `${Math.random() * 4 + 2}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.5 + 0.1,
-              animation: `float-particle ${Math.random() * 10 + 10}s linear infinite`,
-              animationDelay: `${Math.random() * 10}s`,
-            }}
-          />
-        ))}
-        <style jsx global>{`
-          @keyframes float-particle {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.5; }
-            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
-          }
-        `}</style>
-      </div>
+    <div className={`min-h-screen relative overflow-hidden ${theme === "dark" ? "bg-[#0F1729]" : "bg-white"}`}> 
+    
     {/* use for glowing blobs */}
       <div className="animated-bg">
         <div className="blob blob-1"></div>

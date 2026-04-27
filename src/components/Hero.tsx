@@ -70,14 +70,14 @@ export default function Hero() {
                 </svg>
                 Chrome Extension
               </a>
-              <button type="button" className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-secondary dark:hover:text-secondary transition-colors group text-sm">
+              <Link href="/#Watchdemo" className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-secondary dark:hover:text-secondary transition-colors group text-sm">
                 <span className="w-8 h-8 bg-linear-to-br from-primary to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 transition-transform">
                   <svg className="w-3 h-3 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </span>
                 <span className={`font-medium ${theme === "light" ? "text-gray-700" : "text- "}`}>Watch how it works</span>
-              </button>
+              </Link>
             </div>
           </div>
 

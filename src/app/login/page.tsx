@@ -1,47 +1,86 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useRouter } from 'next/navigation'
 import { useTheme } from "@/components/ThemeProvider"
 import Link from "next/link"
+import { createClient } from '@/utils/supabase/client'
+
 
 export default function SignIn() {
-  const { theme } = useTheme()
+  const {theme} = useTheme()
+  const router = useRouter()
   const [formData, setFormData] = useState({ email: "", password: "" })
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [error, setError] = useState("")
 
-  // right now no db so pass through 
-  function handleSubmit(e: React.FormEvent){
+ // First USE EFFECT: Check if user is already logged in
+
+  useEffect(() => {
+    // Create Supabase client
+    const supabase = createClient()
+
+    // Check if there's a valid session
+    // If user is already logged in, redirect to homepage
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user) {
+        // User is already logged in, redirect to homepage
+        router.push('')
+      }
+    })
+  }, [router])
+
+  // HANDLE SUBMIT: Process login when user clicks Sign In
+
+  async function handleSubmit(e: React.FormEvent) {
+    // Step 1: Stop page from refreshing (we want AJAX/async style)
     e.preventDefault()
+
+    // Step 2: Show loading spinner on button
+    setStatus("loading")
+    
+    // Step 3: Clear any previous error messages
+    setError("")
+
+    try {
+      // Step 4: Create Supabase client first
+      const supabase = createClient()
+
+      // Step 5: Call Supabase it checks if user exists and password matches
+      // If valid, Supabase creates a session cookie automatically
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: formData.email,        // User's email from form
+        password: formData.password  // User's password from form
+      })
+
+      // Step 6: Check if login was successful or failed
+      if (error) {
+        
+        // LOGIN FAILED: Show error message to user
+        // error.message might say "Invalid login credentials"
+        setError(error.message)
+        setStatus("error")
+      } else {
+        // LOGIN SUCCESS: data contains user info and session
+        // The session cookie is automatically saved by Supabase
+        
+        setStatus("success")
+        
+        // Step 7: Wait 1 second to show success message, then redirect
+        setTimeout(() => {
+          router.push('/')  // Redirect to homepage
+        }, 1000)
+      }
+    } catch (err) {
+      // Handle unexpected errors (network issues, etc.)
+      setError("Something went wrong. Please try again.")
+      setStatus("error")
+    }
   }
 
   return (
     <div className={`min-h-screen relative overflow-hidden py-12 px-4 sm:px-6 ${theme === "dark" ? "bg-[#0F1729]" : "bg-white"}`}>
-      <div className="absolute inset-0 ">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full bg-[#01d4db]"
-            style={{
-              width: `${Math.random() * 4 + 2}px`,
-              height: `${Math.random() * 4 + 2}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.5 + 0.1,
-              animation: `float-particle ${Math.random() * 10 + 10}s linear infinite`,
-              animationDelay: `${Math.random() * 10}s`,
-            }}
-          />
-        ))}
-        <style jsx global>{`
-          @keyframes float-particle {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            90% { opacity: 0.5; }
-            90% { opacity: 0.5; }
-            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
-          }
-        `}</style>
-      </div>
+      
       <div className="animated-bg">
         <div className="blob blob-1"></div>
         <div className="blob blob-2"></div>
