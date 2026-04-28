@@ -24,6 +24,7 @@ export default function ResetPassword() {
     const accessToken = hashParams.get("access_token") || queryParams.get("access_token")
     const refreshToken = hashParams.get("refresh_token") || queryParams.get("refresh_token")
 
+    // function for verifysession
     async function verifySession() {
       const supabase = createClient()
       
