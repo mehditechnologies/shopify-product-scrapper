@@ -6,7 +6,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { createClient } from "@/utils/supabase/client"
 
-// reset-password function
+// reset password function
 export default function ResetPassword() {
   const { theme } = useTheme()
   const router = useRouter()
@@ -24,7 +24,6 @@ export default function ResetPassword() {
     const accessToken = hashParams.get("access_token") || queryParams.get("access_token")
     const refreshToken = hashParams.get("refresh_token") || queryParams.get("refresh_token")
 
-    // function for verifysession
     async function verifySession() {
       const supabase = createClient()
       
