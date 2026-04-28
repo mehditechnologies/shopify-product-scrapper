@@ -121,7 +121,7 @@ export default function Pricing() {
               </li>
             </ul>
             <Link
-              href="/register"
+              href="/Register"
               className="block w-full py-3 bg-[#018589] hover:bg-[#017371] text-white font-semibold rounded-lg text-center"
             >
               Sign Up Now
