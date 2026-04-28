@@ -6,7 +6,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { createClient } from "@/utils/supabase/client"
 
-// reset password function
+// reset-password function
 export default function ResetPassword() {
   const { theme } = useTheme()
   const router = useRouter()
