@@ -5,7 +5,8 @@ export function middleware(request: NextRequest) {
   
   const needsAuth = currentPath.startsWith('/scrape') || 
       currentPath.startsWith('/theme_detector') || 
-      currentPath.startsWith('/app_detector')
+      currentPath.startsWith('/app_detector') ||
+      currentPath.startsWith('/profile')
   
   if (!needsAuth) {
     return NextResponse.next()
@@ -25,5 +26,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/scrape', '/theme_detector', '/app_detector'],
+  matcher: ['/scrape', '/theme_detector', '/app_detector', '/profile'],
 }

@@ -10,9 +10,31 @@ export default function ForgotPassword() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [error, setError] = useState("")
 
-  function handleSubmit(e: React.FormEvent){
-    const resetpass =
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    setStatus("loading")
+    setError("")
+
+    try {
+      // Call our API to send reset email
+      const response = await fetch('/api/auth/request-password-reset', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: formData.email })
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        setError(data.error || 'Failed to send reset email')
+        setStatus("error")
+      } else {
+        setStatus("success")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+      setStatus("error")
+    }
   }
 
   return (

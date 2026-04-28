@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTheme } from "@/components/ThemeProvider";
+import { createClient } from "@/utils/supabase/client";
 
 // It allows users to enter a Shopify store URL and export products
 export default function ScrapePage() {
@@ -53,6 +54,19 @@ export default function ScrapePage() {
       // We save them to state to display on screen
       setProducts(data.products);
       setStatus('success');
+
+      // Save to history in Supabase database
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      
+      if (user) {
+        await supabase.from('user_history').insert({
+          user_id: user.id,
+          url: shopUrl,
+          type: 'scrape',
+          result_count: data.products?.length || 0
+        })
+      }
 
     } catch (err) {
       // If something goes wrong, show error

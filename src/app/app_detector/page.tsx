@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "@/components/ThemeProvider";
+import { createClient } from "@/utils/supabase/client";
 
 
 interface App {
@@ -44,7 +45,7 @@ export default function AppDetector() {
     setParticles(newParticles);
   }, [appTheme]);
 
-  // handle detect function
+// handle detect function
   const handleDetect = async () => {
     if (!storeUrl) {
       setError("Please enter a store URL");
@@ -71,6 +72,20 @@ export default function AppDetector() {
 
       setApps(data.apps || []);
       setStatus("success");
+
+      // Save to history in Supabase database
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      
+      if (user) {
+        await supabase.from('user_history').insert({
+          user_id: user.id,
+          url: storeUrl,
+          type: 'app',
+          app_name: `${data.apps?.length || 0} apps`
+        })
+      }
+    
     } catch (err) {
       setError("Something went wrong. Please try again.");
       setStatus("error");

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useTheme } from "@/components/ThemeProvider";
+import { createClient } from "@/utils/supabase/client";
 
 
 export default function ThemeDetector() {
@@ -47,6 +48,19 @@ export default function ThemeDetector() {
 
       setTheme(data.theme);
       setStatus("success");
+
+      // Save to history in Supabase database
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      
+      if (user) {
+        await supabase.from('user_history').insert({
+          user_id: user.id,
+          url: storeUrl,
+          type: 'theme',
+          theme_name: data.theme?.name || "Unknown"
+        })
+      }
     } catch (err) {
       setError("Something went wrong. Please try again.");
       setStatus("error");

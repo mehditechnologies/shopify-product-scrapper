@@ -25,7 +25,7 @@ export default function SignIn() {
     supabase.auth.getUser().then(({ data: { user } }) => {
       if (user) {
         // User is already logged in, redirect to homepage
-        router.push('')
+        router.push('/')
       }
     })
   }, [router])

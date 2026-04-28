@@ -1,12 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "./ThemeProvider";
 import Link from "next/link";
+import { createClient } from "@/utils/supabase/client";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+  const supabase = createClient();
+
+  // Check if user is logged in - runs on mount and auth changes
+  useEffect(() => {
+    async function checkuser() {
+      const { data: { user } } = await supabase.auth.getUser();//call supabase to get current loggedin user
+      setUser(user);//save user to state 
+      setLoading(false);//stop loading 
+    }
+
+    checkuser();
+          
+    // Listen for auth changes in other tabs (login/logout in other tabs)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user || null);
+      setLoading(false);
+    }); 
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  // Handle logout
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    router.push("/login");
+  };
 
   return (
     
@@ -57,12 +88,37 @@ export default function Header() {
               )}
             </button>
             
-            <Link
-              href="/login"
-              className={`text-sm font-medium hover:text-green-500 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}
-            >
-              Sign in
-            </Link>
+            {user ? (
+              <>
+                <Link
+                  href="/profile"
+                  className={`text-sm font-medium hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}
+                >
+                  Profile
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className={`text-sm font-medium hover:text-red-500 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className={`text-sm font-medium hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}
+                >
+                  Sign in
+                </Link>
+                <Link
+                  href="/Register"
+                  className={`text-sm font-medium hover:text-[#018589] ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}
+                >
+                  Register
+                </Link>
+              </>
+            )}
             
             <Link
               href="/#pricing"
